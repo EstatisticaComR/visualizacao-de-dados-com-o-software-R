@@ -1,0 +1,62 @@
+#Gráficos usando pacote básico do R
+
+##Variáveis Qualitativas:
+
+Características que dizem respeito a qualidade ou atributos. Se as categorias da variável possuem uma ordem natural, ela é dita ser *qualitativa ordinal*; caso contrário, *qualitativa nominal*. No R estas variáveis são chamadas de fatores (*factor*).
+
+Exemplos:
+
+>- *Variáveis Qualitativas Nominais:*
+
+Sexo: Feminino, Masculino
+Cor de olhos: Pretos, Castanhos, Azuis, Verdes
+Tipo de Farinha: Trigo, aveia, milho, banana, outra
+Fator RH do sangue: positivo, negativo
+
+>- *Variáveis Qualitativas Ordinais:*
+
+Estado de Saúde: Ruim, Regular, Bom
+Tipo de Acidente: Leve, Moderado, Grave
+Cargo na empresa: diretor, vice-presidente, presidente
+
+Quais gráficos podem ser usados?
+Setores e barras
+
+##Variáveis Quantitativas:
+
+Características que dizem respeito a quantidades. Se os valores da variável se referem a uma contagem, ela é dita ser *quantitativa discreta*. Caso se refira a uma mensuração (com
+unidade de medida), ela é dita ser *quantitativa contínua*.
+
+Exemplos:
+
+>- *Variáveis Quantitativas Discretas:*
+
+Nº de pessoas na família
+Nº de acidentes na BR101 por ano
+Nº de anos de estudos
+
+>- *Variáveis Quantitativas Contínuas:*
+
+Peso (Kg)
+Valor de passagem aérea (R$)
+Tempo para executar uma tarefa (horas)
+
+Quais gráficos podem ser usados?
+Histograma, boxplot, dispersão, linha.
+
+##Os gráficos
+
+A elaboração de gráficos no R se dará na forma de *script*. Construiremos os *scripts* que poderão ser adaptados para outras situações semelhantes. Para executar os *scripts* basta inseri-los
+no console do programa R.
+
+##Gráfico de barras:
+
+O gráfico de barras é composto por duas linhas ou eixos, um vertical e outro horizontal. No eixo vertical são construídas as barras que representam a variação de um fenômeno ou de um processo de acordo com sua intensidade. Essa intensidade é indicada pela altura da barra. No eixo horizontal especifica-se as categorias da variável. As barras devem sempre possuir a mesma largura e a distância entre elas deve ser constante.
+
+Veja a seguir como construir este tipo de gráfico no R. Utilizaremos os dados da tabela 3.1 referente ao número de bolsas de pesquisa em cada área do conhecimento de duas instituições de ensino:
+
+!!!
+
+O primeiro passo na construção do gráfico é ter os dados armazenados em objeto apropriado. No caso de gráfico de barras é necessário que os dados da tabela estejam armazenados em vetores que denominaremos de x e y, sendo que x representará as categorias das áreas do conhecimento e y representará as frequências de cada categoria. Como temos duas instituições, discriminaremos as frequências por ya e yb respectivamente a cada instituição.
+
+PAG 43 PAREI

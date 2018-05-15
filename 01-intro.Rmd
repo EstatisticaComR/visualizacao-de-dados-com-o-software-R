@@ -1,0 +1,20 @@
+#Apresentação {#intro}
+
+Esta obra é fruto de pesquisas sobre as possibilidades de elaboração de gráficos no mundo atual. As tecnologias disponíveis tornam possível analisar em curto espaço de tempo uma grande massa de dados. Entretanto é preciso ter o suporte de um software que possibilite a operacionalização destas análises. Apresentamos aqui o que há de  mais atual e inovador
+no que diz respeito ao uso do software R para produção de gráficos e visualização de dados.
+
+O capítulo 2 foi desenvolvido a partir de material produzido durante o projeto de monitora da disciplina de Métodos Computacionais I no ano de 2011 tendo como monitora a aluna do curso de Graduação em Estatística Paola da Silva Martins, época em que ministramos uma oficina de gráficos durante a agenda acadêmica 2011. O resultado desta experiência e aprendizado gerou a ideia inicial desta obra.
+
+O capitulo 3 aborda o pacote Lattice onde o R evolui em relação ao pacote básico nos gráficos condicionados a uma ou mais variável categórica. Apresenta-se além desta característica o efeito jitter, o uso de transparência nos gráficos e o uso de gráficos em 3D.
+
+O capítulo 4 apresenta os recursos gráficos do pacote ggplot2, que é um dos mais importantes atualmente para visualização dos dados. Ele veio para aprimorar a junção entre o que é possível realizar nos pacotes básico e Lattice, de forma extremamente alinhada. 
+
+O capítulo 5 apresenta um importante recurso para produção de infográficos interativos usando o pacote googleVis, possibilitando ao leitor produzir gráficos para serem publicados na web.
+
+No capítulo 6 aborda-se a utilização dos dispositivos de saída para as formas gráficas, as vantagens e desvantagens de cada formato e o uso das cores para  evidenciar os aspectos principais de um gráfico.
+
+Procurou-se estabelecer uma diretriz quanto à escolha do gráfico mais adequado à variável de interesse. Explica-se como inserir cada elemento necessário a um gráfico informativo como título, legenda, nomes nos eixos, escala dos eixos, aplicação de cores, tamanho de fonte, dentro outros objetos gráficos. Apresentamos uma seção de treinamento em alguns capítulos permitindo ao leitor o desenvolvimento da habilidade de manipulação dos comandos aqui apresentados.
+
+A sequência de comandos pode ser adaptada para situações semelhantes em que seja necessária a construção de um dos gráficos apresentados. Pode ser útil a todos aqueles que desejam aprender a construir gráficos adequados utilizando o programa R de forma prática e rápida. Supõe-se alguma familiaridade no R no que diz respeito à criação de objetos do tipo vetor, matriz e tabela de dados.
+
+Esperamos que este trabalho possa inspirar muitos profissionais a produzirem informações relevantes através das inúmeras formas de visualização de dados que o software R proporciona.
