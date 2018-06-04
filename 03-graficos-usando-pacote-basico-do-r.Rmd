@@ -6,14 +6,14 @@ Características que dizem respeito a qualidade ou atributos. Se as categorias d
 
 Exemplos:
 
->- *Variáveis Qualitativas Nominais:*
+* Variáveis Qualitativas Nominais:
 
 Sexo: Feminino, Masculino
 Cor de olhos: Pretos, Castanhos, Azuis, Verdes
 Tipo de Farinha: Trigo, aveia, milho, banana, outra
 Fator RH do sangue: positivo, negativo
 
->- *Variáveis Qualitativas Ordinais:*
+* Variáveis Qualitativas Ordinais:
 
 Estado de Saúde: Ruim, Regular, Bom
 Tipo de Acidente: Leve, Moderado, Grave
@@ -29,13 +29,13 @@ unidade de medida), ela é dita ser *quantitativa contínua*.
 
 Exemplos:
 
->- *Variáveis Quantitativas Discretas:*
+* Variáveis Quantitativas Discretas:
 
 Nº de pessoas na família
 Nº de acidentes na BR101 por ano
 Nº de anos de estudos
 
->- *Variáveis Quantitativas Contínuas:*
+* Variáveis Quantitativas Contínuas:
 
 Peso (Kg)
 Valor de passagem aérea (R$)
@@ -55,8 +55,263 @@ O gráfico de barras é composto por duas linhas ou eixos, um vertical e outro h
 
 Veja a seguir como construir este tipo de gráfico no R. Utilizaremos os dados da tabela 3.1 referente ao número de bolsas de pesquisa em cada área do conhecimento de duas instituições de ensino:
 
-!!!
+First Header | Second Header
+------------ | -------------
+Content from cell 1 | Content from cell 2
+Content in the first column | Content in the second column
+
+Área do conhecimento | Instituição A | Instituição B
+------------ | ------------- | ------------- 
+Saúde | 1751 | 2528
+Exatas | 2186 | 2132
+Humanas | 947 | 1843
+Comunicação | 29 | 280
+Fonte: Dados fictícios 
 
 O primeiro passo na construção do gráfico é ter os dados armazenados em objeto apropriado. No caso de gráfico de barras é necessário que os dados da tabela estejam armazenados em vetores que denominaremos de x e y, sendo que x representará as categorias das áreas do conhecimento e y representará as frequências de cada categoria. Como temos duas instituições, discriminaremos as frequências por ya e yb respectivamente a cada instituição.
 
-PAG 43 PAREI
+Entretanto, o vetor yb não terá nenhuma função nos
+scripts em que consideram apenas a instituição A e pode ser
+omitido até que seja necessário a sua utilização.
+
+```{r}
+#Script Gráfico de Barras sem subtítulo
+x <- c("saúde", "exatas", "humanas", "comunicação")
+ 
+ya <- c(1751, 2186, 947, 29)
+yb <- c(2528, 2132, 1843, 280)
+barplot(ya, names.arg=x, main="Distribuição de bolsas de pesquisa por área de conhecimento", xlab="Grandes Áreas", ylab="Frequência")
+```
+
+Note que o título do gráfico é especificado pelo texto entre aspas do argumento main do comando barplot, enquanto que os eixos são nomeados pelo argumento xlab e ylab respectivamente ao eixo x e y. 
+
+Caso deseje acrescentar um subtítulo que ficará posicionado abaixo do eixo x, o script deverá conter o argumento sub="texto", veja:
+
+```{r}
+#Script Gráfico de Barras com subtítulo
+
+x <- c("saúde", "exatas", "humanas", "comunicação")
+ya <- c(1751, 2186, 947, 29)
+barplot(ya, names.arg=x, main="Distribuição de bolsas de pesquisa por área de conhecimento", xlab="Grandes Áreas", ylab="Frequência", sub="Dados fictícios")
+```
+
+###Modificando o tamanho da fonte
+
+Usando o argumento cex.nome, podemos mudar o tamanho da fonte de diversas partes do gráfico. Se necessitar mudar o tamanho da fonte do título, dos eixos, do subtítulo ou dos números nos eixos acrescente o argumento
+
+* cex.main = valor, para o título
+* cex.lab = valor, para os eixos
+* cex.axis = valor, para o números dos eixos
+* cex.sub = valor, para o subtítulo que pode ser acrescentado abaixo do rótulo do eixo x
+
+No R o valor padrão é 1, para aumentar use valor maior do que 1; para diminuir use valor menor do que 1. Confira o resultado da diminuição/aumento do título reproduzindo os comandos abaixo.
+
+```{r}
+barplot(ya, names.arg=x, main="Distribuição de bolsas de pesquisa por área de conhecimento", cex.main=0.9)
+```
+
+```{r}
+barplot(ya, names.arg=x, main="Distribuição de bolsas de pesquisa por área de conhecimento", cex.main=1.5)
+```
+
+Analogamente, para mudar o tamanho dos números do eixo y utilize o argumento *cex.axis*=valor.
+
+```{r}
+barplot(ya, names.arg=x, main="Distribuição de bolsas de pesquisa por área de conhecimento", cex.axis=0.5)
+```
+
+
+Para mudar o tamanho da fonte dos nomes dos eixos, utilize o argumento *cex.lab*=valor.
+
+```{r}
+barplot(ya, names.arg=x, main="Distribuição de bolsas de pesquisa por área de conhecimento", cex.lab=0.5)
+```
+
+
+###Eliminando os eixos do gráfico
+
+Podemos ainda retirar os eixos do gráfico, neste caso usa-se o argumento axes=F:
+
+```{r}
+barplot(ya, names.arg=x, main="Distribuição de bolsas de pesquisa por área de conhecimento", axes=F)
+```
+
+Note que neste tipo de gráfico o eixo numérico corresponde apenas ao eixo y, portanto o argumento axes=F omitirá o eixo y.
+
+###Invertendo a posição das barras
+
+Também podemos colocar as barras na posição horizontal, colocando o argumento horiz=T, neste caso os nomes dos eixos devem ser trocados, ou seja, *xlab* recebe o texto que anteriormente correspondia ao *ylab* e vice-versa.
+
+```{r}
+x <- c("saúde", "exatas", "humanas", "comunicação")
+ya <- c(1751, 2186, 947, 29)
+barplot(ya, names.arg=x, main="Distribuição de bolsas de pesquisa por área de conhecimento", xlab="Grandes Áreas", ylab="Frequência", sub="Dados fictícios", horiz=T)
+```
+
+###Cor e sombreamento das barras
+
+Podemos preencher as barras com linhas de sombreamento ou com cor uniforme. Os gráficos acima foram preenchidos na cor cinza que é o padrão do R. Para escolher a linha de sombreamento das barras utilizamos *density*=valor, este valor representa a densidade de linhas por polegada e é um número positivo. É possível ainda definir o ângulo de inclinação das linhas usando o argumento *angle*=valor, este valor variando de 0 a 360 no sentido anti-horário. Caso o ângulo não seja informado, o padrão será inclinação de 45º.
+
+```{r}
+barplot(ya, names.arg=x, main="Distribuição de bolsas de pesquisa por área de conhecimento", xlab="Grandes Áreas", ylab="Frequência", sub="Dados fictícios", density=10)
+```
+
+```{r}
+barplot(ya, names.arg=x, main="Distribuição de bolsas de pesquisa por área de conhecimento", xlab="Grandes Áreas", ylab="Frequência", sub="Dados fictícios", density=10, angle=90)
+```
+
+Para preencher as barras com cores uniformes diferentes do padrão estabelecido, usamos o comando *col*=“nome da cor” ou *col*=valor, este valor representa o número da cor.
+
+Para conhecer a palheta de cores utilize o comando *colors()* na linha de comando. Será exibido 657 nomes de cores possíveis. Por exemplo, *colors()[10]* corresponde à cor "aquamarine2".
+
+```{r}
+barplot(ya, names.arg=x, main="Distribuição de bolsas de pesquisa por área de conhecimento", xlab="Grandes Áreas", ylab="Frequência", sub="Dados fictícios", col="aquamarine2")
+```
+
+Podemos ainda colorir cada barra de uma cor, neste caso como temos 4 barras, utilizaremos uma sequência de cores que corresponderá à sequência das barras respectivamente. Podemos atribuir as cores pelos nomes ou por números de 1 a 8 que correspondem respectivamente às cores 1-preto, 2-vermelho, 3-verde, 4-azul, 5-ciano, 6-magenta, 7-amarelo e 8-cinza.
+
+```{r}
+barplot(ya, names.arg=x, main="Distribuição de bolsas de pesquisa por área de conhecimento", xlab="Grandes Áreas", ylab="Frequência", sub="Dados fictícios", col=c(1, 2, 3, 4))
+```
+
+É possível criar cores através do sistema RGB (Red,Green e Blue). Neste caso, valores entre 0 e 1 deverão ser atribuídos numa sequência tripla que corresponde ao Red, Green e Blue. Para se ter uma idéia de como o sistema funciona, a sequência 0, 0, 0 corresponde ao preto e a sequência 1, 1, 1 corresponde ao branco. Neste sistema é possível definir mais de 16 milhões de cores distintas.
+
+```{r}
+barplot(ya, names.arg=x, main="Distribuição de bolsas de pesquisa por área de conhecimento", xlab="Grandes Áreas", ylab="Frequência", sub="Dados fictícios", col=rgb(1, 0.5, 0))
+```
+
+###Eliminando a linha de borda das barras
+
+Podemos excluir a linha das bordas das barras acrescentando o argumento *border*=NA.
+
+```{r}
+barplot(ya, names.arg=x, main="Distribuição de bolsas de pesquisa por área de conhecimento", xlab="Grandes Áreas", ylab="Frequência", sub="Dados fictícios", border=NA)
+```
+
+Para o caso de preenchimento com linhas, as bordar poderão ser omitidas:
+
+```{r}
+barplot(ya, names.arg=x, main="Distribuição de bolsas de pesquisa por área de conhecimento", xlab="Grandes Áreas", ylab="Frequência", sub="Dados fictícios", density=10, border=NA)
+```
+
+Ou ainda poderão ser incluídas bordas no mesmo padrão das linhas de preenchimento das barras, basta acrescentar *border*=T.
+
+```{r}
+barplot(ya, names.arg=x, main="Distribuição de bolsas de pesquisa por área de conhecimento", xlab="Grandes Áreas", ylab="Frequência", sub="Dados fictícios", density=10, col=5, border=T)
+```
+
+###Gráfico de Barras com duas variáveis
+
+Também podemos criar o gráfico de barras de duas variáveis, um ao lado do outro, na mesma janela gráfica. Para isso, cada variável deverá ser armazenada em um vetor que chamaremos de ya e yb. Será necessário criarmos uma matriz com duas colunas, uma para cada variável e 4 linhas, uma para cada grande área do nosso exemplo. Chamaremos tal matriz de Y e nomearemos as linhas e colunas desta matriz conforme script abaixo:
+
+```{r}
+#Script Gráfico de Barras para duas variáveis
+
+x <- c("saúde", "exatas", "humanas", "comunicação")
+ya <- c(1751, 2186, 947, 29)
+yb <- c(2528, 2132, 1843, 280)
+Y <- matrix(c(ya,yb), nrow=4, ncol=2, dimnames=list(x, c("Intituição A", "Instituição B")))
+barplot(Y, main="Distribuição de bolsas de pesquisa por área de conhecimento", xlab="Grandes Áreas", ylab="Frequência")
+```
+
+O padrão do comando *barplot* aplicado a uma matriz é empilhar todas as categorias, acumulando as frequências. Às vezes, essa maneira não é a mais adequada para visualizar o que se deseja, então poderemos usar o argumento *bisede*=T para obtermos barras lado a lado:
+
+```{r}
+#Script Gráfico de Barras para duas variáveis sem empilhamento
+
+x <- c("saúde", "exatas", "humanas", "comunicação")
+ya <- c(1751, 2186, 947, 29)
+yb <- c(2528, 2132, 1843, 280)
+Y <- matrix(c(ya,yb), nrow=4, ncol=2, dimnames=list(x, c("Intituição A", "Instituição B")))
+barplot(Y, main="Distribuição de bolsas de pesquisa por área de conhecimento", xlab="Grandes Áreas", ylab="Frequência", beside=T)
+```
+
+Para finalizarmos a apresentação do gráfico, adicionaremos legenda e subtítulo citando a fonte.
+
+```{r}
+#Script Gráfico de Barras para duas variáveis com legenda
+
+x <- c("saúde", "exatas", "humanas", "comunicação")
+ya <- c(1751, 2186, 947, 29)
+yb <- c(2528, 2132, 1843, 280)
+Y <- matrix(c(ya,yb), nrow=4, ncol=2, dimnames=list(x, c("Intituição A", "Instituição B")))
+barplot(Y, main="Distribuição de bolsas de pesquisa por área de conhecimento", xlab="Grandes Áreas", ylab="Frequência", beside=T, legend.text=rownames(Y), sub="Fonte: Dados fictícios")
+```
+
+Pode ocorrer de a legenda sobrepor as barras do gráfico, neste caso sugerimos o artifício de aumentar o eixo y utilizando o argumento *ylim*=c(valor inicial, valor final).
+
+```{r}
+barplot(Y, main="Distribuição de bolsas de pesquisa por área de conhecimento", xlab="Grandes Áreas", ylab="Frequência", beside=T, legend.text=rownames(Y), sub="Fonte: Dados fictícios", ylim=c(0, 4000))
+```
+
+###Hora de Praticar
+
+1. Com base nos dados da tabela 2.1 construa um gráfico de barras que mostra a relação de alunos/professor em cada tipo de escola. Neste caso será necessário obter os valores da nova variável que é o resultado da coluna 3 dividido pela coluna 2. Coloque título adequado, legenda, e nomes nos eixos.
+
+2. Com base na questão 1, refaça o gráfico de barras com a barras no sentido horizontal.
+
+3. Refaça o gráfico da questão 1 utilizando sombreamento de densidade 60.
+
+4. Refaça o gráfico da questão 1 utilizando sombreamento de densidade 50 e ângulo das linhas de sombreamento de 75 graus.
+
+5. O vetor peso indica o peso médio de pintinhos com 2,4,6,8 e 10 dias de nascido respectivamente.
+peso=(42,51,59,64,76).
+Considere cada tempo de nascido como sendo uma categoria. Estabeleça um gráfico de barras para o peso médio dos pintinhos em cada categoria. Coloque título, legenda e nomes nos eixos.
+
+6. Refaça o gráfico da questão 5 utilizando o seguinte esquema de cores: "blue", "pink", "yellow", "green", "red".
+
+7. Refaça o gráfico da questão 6 utilizando barras horizontais.
+
+8. Numa central telefônica de uma grande empresa, havia a sensação de saturação do sistema utilizado. Para melhor representar o que ocorria foi realizado um acompanhamento com as telefonistas que teriam que responder aos problemas em que números ocorriam e lançá-los na Lista de Verificação. Tab3 resume os dados desta lista. Apresente um gráfico de barras para estes dados com barras verticais com sombreamento de densidade 80 e ângulo das linhas de 120 graus.
+
+Tipo de defeito | Número de ocorrência
+------- | ------- | ------- 
+Linha Ruidosa | 250
+Linha Aberta | 110
+Alarme | 85
+Não Responde | 45
+Não Toca | 25
+
+9. Considere os dados da Tabela sobre a frequência para um grupo de fumantes de cigarro e um grupo de não-fumantes em diversos níveis de cotinina. Construa um gráfico de barras com preenchimento de cor.
+
+Nível de Cotinina (ng/ml) | Fumantes | Não-fumantes
+------- | ------- | -------
+0–13 | 78 | 3300
+14–49 | 133 | 72
+50–99 | 142 | 23
+100–149 | 206 | 15
+150–199 | 197 | 7
+200–249 | 220 | 8
+250–299 | 151 | 9
+300+ | 412 | 11
+
+##Gráfico de setor
+
+Os gráficos de setor (ou pizza) são representados por círculos divididos proporcionalmente de acordo com os dados do fenômeno ou do processo a ser representado. Os valores são expressos em números ou em percentuais (%). São muito úteis para termos uma visão do tamanho da fatia correspondente a uma categoria quando comparada com o todo. Não é adequado quando se quer utilizá-lo para representar muitas categorias ao mesmo tempo.
+
+Os dados da tabela 2.2 são referentes a frota de veículos no município de Niterói no ano de 2009. Utilizaremos estes dados para fazermos o gráfico.
+
+Tabela 2.2: Frota de principais tipos de veículo do município de Niterói em 2009.
+
+Tipo de veículo | Frota
+------- | ------- | -------
+Automóveis | 151882
+Motocicletas | 19627
+Caminhonetes | 8058
+Motonetas | 3201
+Ônibus | 1969
+Caminhões | 1895
+Outros | 1268
+Fonte: IBGE, Cidades-2009
+
+O primeiro passo na construção do gráfico é ter os dados armazenados em objeto apropriado nomeando cada posição do vetor. Os nomes de cada posição aparecerão no gráfico conforme pode ser visto abaixo.
+
+```{r}
+#Script Básico para gráfico de setores
+
+frota <- c(151882, 19627, 8058,1895, 3201, 1969, 1268)
+names(frota) <- c("automóveis", "motocicletas", "caminhonetes", "motonetas", "ônibus", "caminhões", "outros")
+pie(frota)
+```
+
+# PAREI NA 79
