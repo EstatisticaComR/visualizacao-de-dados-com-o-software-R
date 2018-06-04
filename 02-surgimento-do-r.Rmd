@@ -2,7 +2,7 @@
 
 O software R surgiu no final da década de 1990, na Universidade de Auckland, Nova Zelândia através da iniciativa de dois professores de Estatística que perceberam a importância de se ter acesso a um código acessível aos alunos. Sua primeira versão foi publicada no dia 29 de fevereiro de 2000.
 
-![]()
+![](2 logos do R, pag 25)
 
 Em geral, as licenças para software estatísticos comerciais apresentam um custo elevado, o que gera grande dificuldade de manipulação e aprendizagem aos alunos que necessitam desta ferramenta para produzir suas análises.
 
@@ -16,47 +16,56 @@ O grande sucesso desta iniciativa é que o sistema que se criou de compartilhame
 
 Não sabemos precisar quem foram os pioneiros a utilizar o R dentro da UFF, mas no ano de 2010 seu aprendizado foi introduzido no curso de Estatística na disciplina obrigatória de Métodos Computacionais I, o primeiro contato do aluno calouro com o R. Naquela época, cem por cento dos alunos ingressantes neste curso desconheciam o que era o R. Ainda hoje a maioria dos calouros não o conhecem, o que indica que é no meio Universitário que se tem este primeiro contato.
 
-“Meu primeiro contato com o software foi em 2006 num curso de atualização que eu realizava na ENCE. Naquela época eu pude perceber a potencialidade do software, uma linguagem voltada a objeto, proporcionando facilidade para quem precisa realizar uma pequena programação de comandos, muito mais fácil do que os programas que exigiam declaração de variáveis, uma compilação e posterior execução.”
+>*“Meu primeiro contato com o software foi em 2006 num curso de atualização que eu realizava na ENCE. Naquela época eu pude perceber a potencialidade do software, uma linguagem voltada a objeto, proporcionando facilidade para quem precisa realizar uma pequena programação de comandos, muito mais fácil do que os programas que exigiam declaração de variáveis, uma compilação e posterior execução.”* (ALCOFORADO, 2014)
 
-Atualmente a Universidade Federal Fluminense abriga um importante portal www.estatisticacomr.uff.br que reúne diversos conteúdos de aprendizagem para toda a comunidade, sendo a pioneira no Brasil em organizar um seminário Internacional sobre a linguagem, o SER cuja primeira edição ocorre em maio de 2016.
+CITAÇÃO Luciane Ferreira Alcoforado em entrevista ao Jornal O Fluminense, Segundo Caderno, 09/09/2014
+
+Atualmente a Universidade Federal Fluminense abriga um importante portal [Estatística é com R!](http://www.estatisticacomr.uff.br) que reúne diversos conteúdos de aprendizagem para toda a comunidade, sendo a pioneira no Brasil em organizar um seminário Internacional sobre a linguagem, o SER cuja primeira edição ocorreu em maio de 2016.
 
 ##No Brasil
 
-No Brasil a porta de entrada do R foi através da Universidade Federal do Paraná (UFPR), que disponibilizava um espelho para realização de download do R. As primeiras apostilas em português também iniciaram através da produção do professor Paulo Justiniano da UFPR, (R-BR, 2015). Atualmente há uma lista de discussão oficial do programa R, a R-BR com o propósito de permitir a troca de informações entre os usuários de R no Brasil.
+No Brasil a porta de entrada do R foi através da Universidade Federal do Paraná (UFPR), que disponibilizava um espelho para realização de *download* do R. As primeiras apostilas em português também iniciaram através da produção do professor Paulo Justiniano da UFPR, (R-BR, 2015). Atualmente há uma lista de discussão oficial do programa R, a R-BR com o propósito de permitir a troca de informações entre os usuários de R no Brasil.
 
-Os canais que se destacam na rede social do facebook, tratando especificamente desta linguagem são o grupo R Brasil Programadores contando com aproximadamente 1.500 membros, o grupo R UNIRIO com 110 membros, a página Estatística usando o R com 1700 curtidas e a página Estatística com R com 350 curtidas, esta última criada em maio de 2015 e administrada por equipe de professores e alunos da UFF. Para se ter uma base de comparação podemos citar a página oficial da comunidade Estatística Brasil que conta com 3100 curtidas, (Facebook, 2015).
+Os canais que se destacam na rede social do facebook, tratando especificamente desta linguagem são o grupo R Brasil Programadores contando com aproximadamente 1.500 membros, o grupo R UNIRIO com 110 membros, a página Estatística usando o R com 1700 curtidas e a página Estatística com R com 350 curtidas, esta última criada em maio de 2015 e administrada por equipe de professores e alunos da UFF. Para se ter uma base de comparação podemos citar a página oficial da comunidade Estatística Brasil que conta com 3100 curtidas no Facebook, em 2015.
 
 Podemos perceber através destes números, que assuntos de interesse acadêmico como Estatística e software R não são muito populares se comparados a outros temas nas redes sociais, a maioria destas páginas foram criadas há menos de 4 anos e vem gradativamente ganhando adesão de professores de Instituições de Ensino. Pode-se perceber que muitos grupos e páginas foram criados por iniciativa de alunos de pós-graduação ou graduação no intuito de compartilhar suas dúvidas e promover uma rede de colaboração.
 
-Temos disponível cinco espelhos para download do software R:
+Temos disponível cinco espelhos para *download* do *software* R:
 
-![]()
+*[Center for Comp. Biol. at Universidade Estadual de Santa Cruz](http://nbcgib.uesc.br/mirrors/cran/)
+*[Universidade Federal do Parana](http://cran-r.c3sl.ufpr.br/) 
+*[Oswaldo Cruz Foundation, Rio de Janeiro](http://cran.fiocruz.br/)
+*[University of Sao Paulo, Sao Paulo](http://www.vps.fmvz.usp.br/CRAN/) 
+*[University of Sao Paulo, Piracicaba](http://brieger.esalq.usp.br/CRAN/) 
+
+Fonte: [CRAN R-project](https://cran.r-project.org/mirrors.html)
 
 ##No mundo
 
 Vem ganhando crescente popularidade, tanto é que em meados de 2015 o software atingiu a marca da sexta linguagem mais popular do mundo, segundo a métrica da IEEE Spectrum. Na mesma época em que tal notícia foi divulgada também era anunciado o R consortium que reúne Linux, Microsoft e o R time. Este consortium promete trabalhar no apoio ao desenvolvimento do R, mantendo a linguagem e prestando suporte aos seus usuários.
 
-Na rede social há diversas páginas e grupos, das quais destacamos o R bloggers com 28.500 curtidas, o grupo Users of R Statistical Package com 11.500 membros e o grupo Big Data Analytics using R com 6.500 membros. (Facebook, 2015).
+Na rede social há diversas páginas e grupos, das quais destacamos o R bloggers com 28.500 curtidas, o grupo Users of R Statistical Package com 11.500 membros e o grupo Big Data Analytics using R com 6.500 membros no Facebook em 2015.
 
 ##Instalando o R
 
-Para fazer download do programa R, utilize sempre a página oficial do projeto, disponível em www.r-project.org. Nesta página estará disponível diversas informações sobre a linguagem, documentos que podem auxiliar o aprendiz, além de ser constantemente atualizada com novas versões do programa. Observe que ao lado direito da página oficial, abaixo da palavra download, há um link para CRAN que dará acesso aos espelhos do programa distribuídos pelos diversos países do mundo. No Brasil atualmente há 5 opções, qualquer uma delas pode ser utilizada, veja Tabela 1.
+Para fazer download do programa R, utilize sempre a página oficial do projeto, disponível em [www.r-project.org](http://www.r-project.org). Nesta página estará disponível diversas informações sobre a linguagem, documentos que podem auxiliar o aprendiz, além de ser constantemente atualizada com novas versões do programa. 
+Observe que ao lado direito da página oficial, abaixo da palavra *download*, há um *link* para CRAN que dará acesso aos espelhos do programa distribuídos pelos diversos países do mundo. No Brasil atualmente há 5 opções, qualquer uma delas pode ser utilizada, veja Tabela 1.
 
 !!!
 
-O programa é multiplataforma, o que significa que pode ser instalado nos sistemas Windows, Linux e Mac. Assim, na página de download opte pelo link disponível para o seu sistema operacional. Veja a ilustração para a opção Windows:
+O programa é multiplataforma, o que significa que pode ser instalado nos sistemas Windows, Linux e Mac. Assim, na página de *download* opte pelo *link* disponível para o seu sistema operacional. Veja a ilustração para a opção Windows:
 
 Passo 1: Selecione o sistema operacional
 
->- Download R for Linux
->- Download R for (Mac) OS X
->- Download R for Windows
+* Download R for Linux
+* Download R for (Mac) OS X
+* Download R for Windows
 
-Passo 2: Selecione a versão disponível (na ilustração é a versão R 3.2.1)
+Passo 2: Selecione a versão disponível (na ilustração é a versão R ?)
 
 ![]()
 
-Esta seleção fará o download do programa executável que possibilitará a instalação no seu computador. Atente para o fato de que constantemente são disponibilizadas novas versões do programa e suas atualizações não são automáticas, cabendo ao usuário verificar nesta página a ocorrência de novas versões. Pronto, agora é só utilizar o programa.
+Esta seleção fará o *download* do programa executável que possibilitará a instalação no seu computador. Atente para o fato de que constantemente são disponibilizadas novas versões do programa e suas atualizações não são automáticas, cabendo ao usuário verificar nesta página a ocorrência de novas versões. Pronto, agora é só utilizar o programa.
 
 Nos próximos capítulos abordaremos as possibilidade de visualização de dados com o R, entretanto gostaríamos de destacar que a linguagem oferece inúmeras outras.
 
