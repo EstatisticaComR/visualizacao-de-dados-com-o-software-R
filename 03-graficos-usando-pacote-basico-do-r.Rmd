@@ -55,11 +55,6 @@ O gráfico de barras é composto por duas linhas ou eixos, um vertical e outro h
 
 Veja a seguir como construir este tipo de gráfico no R. Utilizaremos os dados da tabela 3.1 referente ao número de bolsas de pesquisa em cada área do conhecimento de duas instituições de ensino:
 
-First Header | Second Header
------------- | -------------
-Content from cell 1 | Content from cell 2
-Content in the first column | Content in the second column
-
 Área do conhecimento | Instituição A | Instituição B
 ------------ | ------------- | ------------- 
 Saúde | 1751 | 2528
@@ -265,7 +260,7 @@ Considere cada tempo de nascido como sendo uma categoria. Estabeleça um gráfic
 8. Numa central telefônica de uma grande empresa, havia a sensação de saturação do sistema utilizado. Para melhor representar o que ocorria foi realizado um acompanhamento com as telefonistas que teriam que responder aos problemas em que números ocorriam e lançá-los na Lista de Verificação. Tab3 resume os dados desta lista. Apresente um gráfico de barras para estes dados com barras verticais com sombreamento de densidade 80 e ângulo das linhas de 120 graus.
 
 Tipo de defeito | Número de ocorrência
-------- | ------- | ------- 
+------------ | ------------- | ------------- 
 Linha Ruidosa | 250
 Linha Aberta | 110
 Alarme | 85
@@ -275,7 +270,7 @@ Não Toca | 25
 9. Considere os dados da Tabela sobre a frequência para um grupo de fumantes de cigarro e um grupo de não-fumantes em diversos níveis de cotinina. Construa um gráfico de barras com preenchimento de cor.
 
 Nível de Cotinina (ng/ml) | Fumantes | Não-fumantes
-------- | ------- | -------
+------------ | ------------- | ------------- 
 0–13 | 78 | 3300
 14–49 | 133 | 72
 50–99 | 142 | 23
@@ -294,7 +289,7 @@ Os dados da tabela 2.2 são referentes a frota de veículos no município de Nit
 Tabela 2.2: Frota de principais tipos de veículo do município de Niterói em 2009.
 
 Tipo de veículo | Frota
-------- | ------- | -------
+------------ | ------------- | ------------- 
 Automóveis | 151882
 Motocicletas | 19627
 Caminhonetes | 8058
@@ -314,4 +309,498 @@ names(frota) <- c("automóveis", "motocicletas", "caminhonetes", "motonetas", "�
 pie(frota)
 ```
 
-# PAREI NA 79
+O gráfico acima não é informativo, pois o leitor não sabe do que se trata. Para que se torne compreensível é necessário realizar diversas melhorias como colocação de título, e os percentuais que representa cada setor.
+
+O título pode ser adicionado após a janela gráfica ser exibida. Neste caso utilizamos o comando *title*(“texto”) na sequência de comandos do script básico. Note aqui que o gráfico já está construído, apenas acrescentamos o título.
+
+```{r}
+title("Frota 2009 - Niterói_RJ")
+```
+
+Para colocar as porcentagens utilizamos o argumento *labels*. Observe que nesta sequência o título é colocado como argumento da função *pie*. Aqui é necessário que se coloque uma legenda para que o leitor compreenda o gráfico.
+
+```{r}
+#Script para gráfico de setores com título e legenda
+
+frota <- c(151882, 19627, 8058,1895, 3201, 1969, 1268)
+names(frota) <- c("automóveis", "motocicletas", "caminhonetes", "motonetas", "ônibus", "caminhões", "outros")
+porc <- round(frota*100/sum(frota), 2) #arredonda a porcentagem para 2 dígitos significativos)
+rotulos <- paste("(",porc,"%)", sep="")
+pie(frota, main="Frota 2009 - Niterói_RJ", labels=rotulos, col=rainbow(7))
+legend(1, 1, names(frota), col=rainbow(7), pch=rep(20,6))
+```
+
+Se desejar o nome e a porcentagem, utilize a sequência de comandos a seguir, diminuindo o tamanho da fonte e alterando o esquema de cores para melhor adequação:
+
+```{r}
+rotulos <- paste(names(frota),"(",porc,"%)", sep="")
+pie(frota, main="Frota 2009 - Niterói_RJ", labels=rotulos, cex=0.7, col=rainbow(7))
+```
+
+Podemos colocar os nomes manualmente, mas só é bom utilizarmos este recurso no caso de algum nome ficar sobreposto a outro, pois dá um pouco de trabalho, dessa forma:
+
+```{r}
+pie(frota, main="Frota 2009 - Niterói_RJ", labels=NA)
+text(locator (length(names(frota)) ), rotulos)
+```
+
+Após este último comando é necessário que se clique na janela do gráfico onde se deseja que os rótulos sejam impressos. O gráfico só ficará pronto depois de clicar 7 vezes, pois este é o número de setores do gráfico. Pode-se repetir este procedimento até obter o gráfico desejado.
+
+Alguns ajustes podem ser necessários. Para mudar o tamanho da fonte do título use cex.main=valor.
+
+```{r}
+pie(frota, main="Frota 2009 - Niterói_RJ", cex.main=1.2)
+```
+
+Para mudar o tamanho da fonte dos nomes das variáveis use cex=valor.
+
+```{r}
+pie(frota, cex=0.9)
+```
+
+Para girar o gráfico, use init.angle=valor.
+
+```{r}
+pie(frota, main="Frota 2009 - Niterói_RJ", init.angle=180)
+```
+
+###Hora de Praticar
+
+1. Numa central telefônica de uma grande empresa. Havia a sensação de saturação do sistema utilizado. Para melhor representar o que ocorria foi realizado um acompanhamento com as telefonistas que teriam que responder aos problemas em que números ocorriam e lançá-los na Lista de Verificação. Tab3 resume os dados desta lista. Apresente um gráfico de setores para estes dados semelhante ao gráfico da figura 2.12.
+
+!
+
+Tipo de Defeito | Número de Ocorrência
+------------ | ------------- | ------------- 
+Linha Ruidosa | 250
+Linha Aberta | 110
+Alarme | 85
+Não Responde | 45
+Não Toca | 25
+
+2. Refaça o gráfico anterior semelhante ao apresentado na figura 2.13
+
+3. Os dados a seguir nos informam as despesas pessoais dos Estados Unidos (em bilhões de dólares), com Comida e cigarro, domésticos, remédios e saúde, cuidados pessoais e educação privada, respectivamente. Faça o gráfico de setor semelhante ao da figura 2.12.
+despesas=c(22200,10500,3530,1040,341)
+
+4. Refaça o gráfico anterior semelhante ao apresentado na figura 2.13.
+
+##Histograma
+
+Um histograma é uma representação gráfica da distribuição de frequências de uma massa de medições, normalmente um gráfico de barras verticais. Tal gráfico é composto por retângulos justapostos em que a base de cada um deles corresponde ao intervalo de classe e a sua altura à respectiva frequência.
+
+O primeiro passo na construção é ter os dados armazenados em objeto apropriado. Por praticidade utilizaremos dados disponíveis no R o *data(mtcars)*.
+
+```{r}
+data(mtcars)
+mtcars[1:6,] #visualizando parte dos dados até a sexta linha
+```
+
+Vamos explorar os dados da variável *mpg* (primeira coluna) que são os dados do consumo de milhas por galão de diversos tipos de carros.
+
+Para fazermos o histograma usamos o comando *hist()*.
+
+```{r}
+attach(mtcars)
+hist(mpg)
+```
+
+Podemos colocar nosso gráfico em frequência relativa:
+
+```{r}
+hist(mpg, freq=FALSE)
+```
+
+Colocar linhas de sombreamento:
+
+```{r}
+hist(mpg, density=30)
+```
+
+Podemos mudar a angulação dessa linha:
+
+```{r}
+hist(mpg, density=1, angle=80)
+```
+
+Para colocar barras com cores:
+
+```{r}
+hist(mpg, col=c("blue", "red", "orange", "green", "pink"))
+```
+
+Podemos alterar as cores das bordas:
+
+```{r}
+hist(mpg, border=c("blue", "red", "orange", "green", "pink"))
+```
+
+Ou retirar as bordas:
+
+```{r}
+hist(mpg, col=c("blue", "red", "orange", "green", "pink"), border=FALSE)
+```
+
+O histograma, já vem com um título e nomes nos eixos, mas nós também podemos modificá-los:
+
+```{r}
+hist(mpg, main="Histograma de milhas por galão", xlab="MPG", ylab="Frequência")
+```
+
+Podemos definir a quantidade de classes do gráfico:
+
+```{r}
+hist(mpg, breaks=3)
+```
+
+E também fazer o ramo de folhas:
+
+```{r}
+stem(mpg)
+```
+
+###Hora de praticar
+
+1. Os dados são referentes às temperaturas diárias dos meses de maio e setembro, respectivamente, em Fahrenheit, na cidade de Nova York em 1973.
+
+tempm=c(67,72,74,62,56,66,65,59,61,69,74,69,66,68,58,64,66, 57,68,62,59,73,61,61,57,58,57,67,81,79,76)
+temps=c(91,92,93,93,87,84,80,78,75,73,81,76,77,71,71,78,67,7 6,68,82,64,71,81,69,63,70,77,75,76,68)
+
+a. Faça o histograma das temperaturas do mês de maio. Coloque título e linhas de sombreamento de densidade 30.
+    
+b. Faça o histograma das temperaturas do mês de setembro. Coloque título e cor=“Violet”.
+    
+c. Converta as temperaturas do mês de maio para graus Celsius através da expressão °C=(°F − 32)/1,8. Faça o histograma da frequência relativa, coloque título, sombreamento de densidade 25 e cor=“dark blue”
+
+##Boxplot
+
+O *boxplot* é um gráfico que possibilita representar a distribuição de um conjunto de dados com base em alguns de seus parâmetros descritivos, quais sejam: a mediana (q2), o quartil inferior (q1), o quartil superior (q3) e do intervalo interquartil (IQR = q3 - q1).
+
+Vamos usar os dados do próprio R, sobre uma amostra de 48 pedras de uma reserva de petróleo, onde temos a área, perímetro, formato e permeabilidade. Para exemplificarmos, usaremos a variável formato (*shape*) que é dada pelo perímetro dividido pela raiz quadrada da área da pedra.
+
+```{r}
+#Script para BoxPlot simples
+
+data(rock)
+attach(rock)
+boxplot(shape)
+```
+
+Adicionando título ao gráfico:
+
+```{r}
+boxplot(shape, main="BoxPlot do formato da pedra", ylab="perimetro/sqrt(area)")
+```
+
+Se quisermos que as cercas sejam os valores máximo e mínimo utilizamos range=0:
+
+```{r}
+bloxplot(shape, range=0)
+```
+
+Se quisermos que o *outlier* não apareça no gráfico, utilizamos o seguinte comando:
+
+```{r}
+boxplot(shape, outline=FALSE)
+```
+
+Podemos fazer o *boxplot* para vários grupos de observação, facilitando a comparação entre os grupos. Vamos utilizar os dados de *data(PlantGrowth)*
+
+Estes dados são resultados de um experimento para comparar rendimentos (medido pelo peso seco de plantas) obtidos em um controle e duas condições de tratamento diferentes.
+
+```{r}
+data(PlantGrowth)
+attach(PlantGrowth)
+boxplot(weight~group)
+title("Boxplot para rendimento de plantas segundo o tratamento", xlab="tratamento", ylab="peso")
+```
+
+Aprimoramentos:
+
+Se *varwidth*=*TRUE*, as caixas são desenhadas com larguras proporcionais à raiz quadrada do número de observações. Este caso se aplica a grupos de tamanhos diferentes.
+
+```{r}
+x1 <- c(2, 3, 4, 4, 5, 6, 8, 9, 7, 7, 7, 7, 6)
+x2 <- c(1, 1, 1, 1, 2, 3, 4, 3, 2, 3, 4, 5, 6, 3, 4, 3, 2, 2, 2, 3, 4, 5, 6, 3, 2, 1, 1, 1, 2, 3, 4)
+boxplot(x1, x2, varwidth=TRUE)
+```
+
+Se desejamos nomear os grupos, utilizamos o argumento *names*:
+
+```{r}
+boxplot(x1, x2, names=c("grupo1", "grupo2"))
+```
+
+Para modificar a largura da caixa para mais estreita utilizando o argumento *boxwex*:
+
+```{r}
+boxplot(x1, x2, boxwex=0.3)
+```
+
+Para ajeitar o tamanho das linhas limites:
+
+```{r}
+boxplot(x1, x2, staplewex=0.1)
+```
+
+Para colocar cor nas bordas:
+
+```{r}
+boxplot(shape, border="red")
+```
+
+Para preencher a cor de dentro da caixa:
+
+```{r}
+boxplot(shape, col="blue")
+```
+
+Podemos colocar o gráfico no sentido horizontal:
+
+```{r}
+boxplot(shape, horizontal= TRUE, main="BoxPlot do formato da pedra", xlab="valor")
+```
+
+Também podemos verificar todos os cálculos utilizados para a formação do gráfico, seus limites, outlers, etc:
+
+```{r}
+boxplot.stats(shape)
+```
+
+###Hora de Praticar
+
+1. Utilize os dados de contagens de insetos em unidades experimentais agrícolas tratados com inseticidas diferentes disponível no R em InsectSprays e construa um boxplot para os 6 tipos de inseticidas. Coloque título adequado, e caixas preenchidas com a cor lightgray.
+
+2. Refaça o gráfico anterior sem a presença dos outliers.
+
+3. Refaça o primeiro gráfico reduzindo a largura das caixas.
+
+4. Utilize os dados disponíveis no R em rock (veja detalhes sobre estes dados na pag 21) e defina dois vetores:
+
+x é o vetor de perímetros cujas pedras possuam área menor ou igual à área média, ou seja, x <- peri[area <= mean(area)]
+
+y é o vetor de perímetros cujas pedras possuam área maior à área média, ou seja, y <- peri[área > mean(area)]
+
+Faça um boxplot de x e y, com legendas.
+
+5. Refaça o gráfico anterior utilizando o argumento varwidth=TRUE.
+
+##Gráfico de dispersão
+
+Os diagramas de dispersão são representações de duas variáveis que são organizadas em um gráfico, para observar o padrão de relacionamento entre as mesmas. É um método gráfico que permite verificar a existência ou não de relação entre duas variáveis de natureza quantitativa.
+
+Os dados que iremos analisar são medidas da circunferência em mm do tronco de pés de laranjeiras e sua respectiva idade em dias. Com esses dados, criaremos o gráfico de dispersão para observar se há relação entre o tamanho da circunferência com a idade da árvore.
+
+```{r}
+#Script para gráfico de dispersão
+
+data(Orange)
+attach(Orange)
+#Vamos considerar os 7 primeiros valores que correspondem a uma única árvore:
+plot(age[1:7], circumference[1:7], xlab="idade em dias", ylab="circunferência em mm", main="Dispersão entre idade e circunferência")
+```
+
+É interessante colocarmos a reta de regressão linear no mesmo gráfico. Para isso, acrescentamos mais uma linha de comando no *script* acima:
+
+```{r}
+#Script para gráfico de dispersão com reta de regressão
+
+plot(age[1:7], circumference[1:7], xlab="idade em dias", ylab="circunferência em mm", main="Dispersão entre idade e circunferência do tronco de pés de laranjeiras")
+abline( lm (circumference[1:7]~age[1:7]), col=2) #acrescenta a reta de regressão na cor vermelha (col=2).
+text(450, 100, "reta de regressão") # acrescenta o texto entre aspas na posição x=450 e y=100.
+```
+
+A largura da linha que contorna os pontos do gráfico pode ser mudada com o argumento *lwd*.
+
+```{r}
+plot(age[1:7], circumference[1:7], lwd=4) #Teste vários números para ver a diferença.
+```
+
+Podemos mudar as bolas por outros símbolos. Para cada número temos uma forma diferente:
+
+```{r}
+plot(age[1:7], circumference[1:7], pch=20). #Teste vários números para ver a diferença.
+```
+
+Podemos colocar vários símbolos num mesmo gráfico:
+
+```{r}
+plot(age[1:7], circumference[1:7], pch=1:7)
+```
+
+Podemos criar alguns símbolos, por exemplo:
+
+```{r}
+plot(age[1:7], circumference[1:7], pch="@")
+plot(age[1:7], circumference[1:7], pch="&")
+```
+
+Colocando cores:
+
+```{r}
+plot(age[1:7], circumference[1:7], lwd=4, col="orange")
+```
+
+Colocando subtítulo:
+
+```{r}
+plot(age[1:7], circumference[1:7], sub="Desde 1968")
+```
+
+E criar um texto também na posição escolhida (400, 80):
+
+```{r}
+text(400, 80, "Isso aqui pode ser escrito aqui")
+```
+
+Lembrando que para colocar 
+
+* título principal : main="texto"
+* título nos eixos: xlab=”texto” ou ylab=”texto”
+* subtítulo: sub=”texto”
+
+Podemos ainda mudar os limites dos eixos:
+
+```{r}
+plot(age[1:7], circumference[1:7], xlim=range(100:1600), ylim=range(20:180))
+```
+
+Ainda podemos colocar mais de um gráfico numa mesma janela:
+
+```{r}
+#Script para 6 gráficos de dispersão em uma única janela
+
+par(mfrow=c(2, 3)) #assim podemos fazer 6 gráficos em 2 linhas e 3 colunas.
+plot(age[Tree==1], circumference[Tree==1], xlab="idade", ylab="circumferência", sub="árvore1")
+plot(age[Tree==2], circumference[Tree==1], xlab="idade", ylab="circumferência", sub="árvore2")
+plot(age[Tree==3], circumference[Tree==1], xlab="idade", ylab="circumferência", sub="árvore3")
+plot(age[Tree==4], circumference[Tree==1], xlab="idade", ylab="circumferência", sub="árvore4")
+plot(age[Tree==5], circumference[Tree==1], xlab="idade", ylab="circumferência", sub="árvore5")
+plot(age, circumference, xlab="idade", ylab="circumferência", sub="árvores")
+```
+
+###Hora de Praticar
+
+1. Um biólogo foi ao campo e contou o número de sapos em 20 locais. Ele também anotou a umidade e a temperatura em cada local. Faça dois gráficos de dispersão para mostrar a relação do número de sapos com as variáveis temperatura e umidade. Use a função par() para dividir a janela em duas.
+
+Os dados são:
+sapos 6-5-10-11-26-16-17-37-18-21-22-15-24-25-29-31-32-13-39-40
+umid 62-24-21-30-34-36-41-48-56-74-57-46-58-61-68-76-79-33-85-86
+temp 31-23-28-30-15-16-24-27-18-10-17-13-25-22-34-12-29-35-26-19
+
+2. Um biólogo interessado em saber se o número de aves está relacionado ao número de uma determinada espécie de árvore, realizou amostras em 10 locais. Os valores obtidos foram: 
+
+aves <- c(22,28,37,34,13,24,39,5,33,32)
+arvores <- c(25,26,40,30,10,20,35,8,35,28)
+
+Faça um gráfico que mostra a relação entre o número de aves e o número de árvores. Um colega coletou mais dados sobre aves e árvores, em outra área, que podemos aproveitar. Os dados são:
+
+arvores2 <- c(6,17,18,11,6,15,20,16,12,15)
+aves2 <- c(7,15,12,14,4,14,16,60,13,16)
+
+Inclua estes novos pontos no gráfico com um símbolo diferente e cor azul.
+
+3. Repita o gráfico do exercício 2 acima e faça as seguintes
+modificações. Coloque um título no gráfico Use Bolinhas cheias e azuis como símbolo. Coloque as legendas no eixo-x e no eixo-y.
+O padrão do R é fazer uma ―caixa entorno do gráfico, faça uma alteração para que apareça apenas as linhas do eixo-x e do eixo-y. Veja *bty* em ?par
+
+4. Foram levantados os tempos (em horas por semana) que 20 alunos de uma escola da rede pública gastam na Internet e praticando atividades físicas. Os resultados deste levantamento são apresentados a seguir:
+
+Aluno 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20
+Internet 30 8 20 15 12 4 40 25 20 14 22 2 15 18 30 20 24 15 8 8
+At. Físicas 2 10 5 5 8 15 0 4 5 10 2 15 6 4 2 6 4 10 12 15
+
+Construa um gráfico de linhas para esse par de variáveis. Com base neste gráfico, você acredita que há relação entre as horas dedicadas às duas atividades?
+
+##Gráfico de linhas
+
+Este gráfico é útil para plotar uma série de dados ao longo do tempo ou para ligar pontos por linhas.
+
+Vamos ilustrar uma situação onde desejamos plotar o gráfico de duas funções, x ao cubo e –x ao cubo no mesmo gráfico. Neste caso, definiremos inicialmente uma janela gráfica usando o argumento *type*="n". Com este argumento um "gráfico em branco" é criado, são ajustadas apenas as margens e eixos do gráfico e o restante é deixado em branco. A seguir adicionam-se linhas e pontos desejados. Você deve fornecer coordenadas x e y que cubram a amplitude de valores de todos os elementos que você deseja adicionar ao gráfico.
+
+```{r}
+#Script para gráfico de linhas, duas funções no mesmo gráfico
+
+x <- 0:20
+y <- x**3
+plot(c(0,20), c(-8000, 8000), type="n", xlab=NA, ylab=NA)
+lines(x, y)
+lines(x, -y, col="red")
+title("Gráfico de duas funções", xlab="valores de x", ylab="valores de y")
+```
+
+Vamos mostrar agora o gráfico de uma série de valores ao longo do tempo.
+
+Considere os dados da tabela 2.3, correspondentes à temperatura média obtida em Ithaca (NY):
+
+Temperatura Média Mensal de Ithaca - NY.
+Mês | Temperatura ºC
+----------- | -----------
+1 | -5.44
+2 | -5.17
+3 | 0.11
+4 | 6.89
+5 | 12.67
+6 | 17.94
+7 | 20.44
+8 | 19.5
+9 | 15.67
+10 | 9.72
+11 | 4.06
+12 | -2.56
+
+```{r}
+#Script para gráfico de linha
+
+mes <- 1:12
+temperatura <- c(-5.44, -5.17, 0.11, 6.89, 12.67, 17.94, 20.44, 19.5, 15.67, 9.72, 4.06, -2.56)
+plot(mes, temperatura, type="l")
+title("Gráfico da temperatura ao longo dos meses")
+```
+
+Ou se quiser marcar os pontos substitua o comando acima por:
+
+```{r}
+plot(mes, temperatura, type="b")
+title("Gráfico da temperatura ao longo dos meses")
+```
+
+Podemos utilizar comandos já vistos anteriormente para adicionar título aos eixos, mudar tamanho da fonte, mudar cor, símbolos, adicionar subtítulo, mudar os limites dos eixos, etc.
+
+* main = "texto" adiciona título ao gráfico
+* xlab ou ylab = "texto" adiciona título ao eixo x ou y
+* cex = número altera o tamanho da fonte
+* type = 
+    + "p" para pontos,
+    + "l" para linhas,
+    + "b" para pontos e linhas,
+    + "c" para linhas descontínuas nos pontos,
+    + "o" para pontos sobre as linhas,
+    + "n" para nenhum gráfico, apenas a janela.
+* col = "nome" ou número da cor
+* pch = número (0 a 25)
+* lwd = número (controla a espessura da linha)
+
+Podemos ainda grafar duas ou mais séries no mesmo gráfico:
+
+```{r}
+#Script para plotar duas séries temporais em gráfico de linha 
+
+ano <- 2001:2009
+tri1 <- c(72.8, 66.2, 69.2, 65.9, 62.4, 67.8, 61.3, 68.5, 70.4)
+tri2 <- c(60.6, 53.7, 55.3, 56.7, 56.4, 57.8, 57.5, 59.8, 63.3)
+plot(ano, tri1, type="l",main="Taxa de ocupação por trimestre dos hotéis - Município do Rio de Janeiro", xlab="ano", ylab="Taxa de ocupação %", col="blue", ylim=c(50,80))
+lines(ano, tri2, col="red")
+```
+
+É sempre possível mudar o tipo de linha usando o argumento type=:
+
+```{r}
+#Script para plotar duas séries temporais em gráfico de linha com legenda
+
+plot(ano, tri1, type="b", main="Taxa de ocupação por trimestre dos hotéis - Município do Rio de Janeiro", xlab="ano", ylab="Taxa de ocupação %", col="blue", ylim=c(50,80))
+lines(ano, tri2, col="red", type="b")
+legend(2007, 80, c("1o.trim", "2o.trim"), col=c("blue", "red"), pch=rep(20,2))
+```
+
+##PAREI NA 132
