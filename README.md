@@ -1,4 +1,4 @@
-# Visualizacao de dados com o software R
+# Visualização de dados com o software R
 
 * ISBN 978-8592293208
 
