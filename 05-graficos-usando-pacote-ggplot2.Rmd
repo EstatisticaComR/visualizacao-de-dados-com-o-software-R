@@ -1,1 +1,93 @@
 # Gráficos usando pacote ggplot2
+
+O ggplot é um pacote do Software R que é utilizado para a criação de gráficos. Como todo pacote, é necessária a instalação, que é muito simples. Basta digitar
+
+
+```{r eval=FALSE, message=FALSE, warning=FALSE}
+install.packages("ggplot2")
+```
+
+e antes de utilizá-lo, lembrar de carregá-lo
+
+```{r}
+library(ggplot2)
+```
+
+Também é necessário que a versão do R seja recente. Então se você não tem certeza sobre isso, visite a página [www.r-project.org](https://www.r-project.org/) para ver as novidades.
+
+O pacote foi idealizado por Hadley Wickham e Winston Chang que desenvolveram a ideia de construir diversos tipos de gráficos a partir da mesma estrutura de componentes: *data*, referente ao banco de dados; *geom_forma*, com um rol de tipos possíveis de representação dos dados (veja Tabela 4.1) e *coord_system*, referente ao sistema de coordenadas, que pode ser cartesiana, polar e projeção de mapas.
+O gráfico feito com o ggplot é construído a partir de camadas (*layers*), cada camada é sobreposta uma após a outra gerando o desenho final. Existem comandos específicos para cada camada, mais informação é possível obter no site
+[docs.ggplot2.org](http://docs.ggplot2.org), na língua inglesa.
+Para melhor entendimento, será utilizado os dados do capítulo 2, proporcionando uma comparação entre o modo "básico" e o *ggplot*. Cada acréscimo de camada é feito com um sinal de "+". A primeira camada é sempre a informação básica, ou seja, os dados. A próxima camada é o tipo de gráfico que se quer criar. A partir disso, depende da pessoa o que ela quer colocar em seu gráfico; título, eixos, cor, etc. E também é possível salvar o plot com o argumento "ggsave".
+O esquema para todos os tipos de gráficos disponíveis neste pacote é:
+
+**ggplot(banco de dados, aes(x = variável)) + geom_forma()**
+
+O banco de dados assumiremos que esteja depositado em arquivo BD.xls, representando os dados de uma tabela. Das possibilidades de *forma* do comando do *ggplot2* destacamos as mais comuns na tabela 4.1:
+
+Tabela 4.1: Possibilidades de forma para gráficos no ggplot2
+
+Forma | Tipo de gráfico
+----------- | ----------- | -----------
+bar | barras
+Coord_polar | setores
+histogram | histograma
+boxplot | boxplot
+point | dispersão
+line | linha
+abline | reta
+
+Para fazemos modificações nos detalhes das legendas, cores, medidas, etc, usa-se:
+
+* labs() – Para modificar título e nome dos eixos
+* coord_flip() – Para inverter a posição do eixo x e y
+* scale_x_continuous – Para modificar o eixo x
+
+Por último, se quiser salvar a imagem basta acrescentar *ggsave(gráfico, file="nome.pdf")* e este não deve ser seguido pelo sinal +. É possível modificar a largura e a altura da figura com os argumentos *width* e *height*. Por exemplo, **ggsave(gráfico, file="nome.pdf", width = 10, height = 6)**
+
+## Gráfico de Barras no ggplot2
+
+Vamos utilizar os dados da Tabela 2.1 do capítulo 2, para mostrar como podemos gerar os mesmos tipos de gráficos da seção 2.4. Considere que estes dados estejam no arquivo BD.csv, conforme pode ser visto na Tabela 4.2 que mostra também como deve ser a arquitetura do banco de dados para os *scripts* apresentados na sequência.
+
+Tabela 4.2: Arquitetura do Banco de Dados para gráfico de barras ggplot
+
+Área | Frequência | Instituição
+----------- | ----------- | -----------
+Saúde | 1751 | A
+Exatas | 2186 | A
+Humanas | 947 | A
+Comunicação | 29 | A
+Saúde | 2528 | B
+Exatas | 2132 | B
+Humanas | 1843 | B
+Comunicação | 280 | B
+
+Atente para a arquitetura do banco de dados, que no nosso caso será formado por três colunas. Veja que é uma outra forma de representar os mesmos dados da tabela 2.1.
+
+Em informações básicas, x = vetor de dados do eixo x; y = vetor de dados para frequência no eixo y e *fill* representa as categorias de contagem.
+
+No argumento *geom_bar*, uma vez que as frequências já estão consolidadas, deve-se usar o argumento *stat= "identity"*, caso contrário use *stat= "bin"*. Quanto ao argumento *width*, refere-se a largura das barras. Quanto ao argumento *position* temos a opção *dodge* (lado a lado); ou *fill* (empilhado).
+No argumento *labs* informamos os títulos e rótulos dos eixos.
+
+Para o tema geral do gráfico há as seguintes opções:
+
+* theme_bw() – possui fundo branco e linhas de grade
+* theme_gray() – possui fundo cinza e linhas de grade
+* theme_classic() – possui fundo branco sem linhas de grade
+* theme_minimal() – tema mínimo
+
+```{r}
+#Script para gráfico de Barra
+
+dados <- read.csv2("C:\\...\\BD.csv")
+p <- ggplot(data=dados, aes(x=Área, y=Frequência, fill=Instituição))+ # Informação Básica
+geom_bar(stat='identity', width=0.5, position='dodge') +
+labs(x="Área", y="Frequência", title="Distribuição de Bolsas por Área do Conhecimento") +
+theme_bw()
+p #plota o gráfico na janela gráfica
+
+#gravando o gráfico em arquivo pdf do diretório corrente:
+ggsave(p, file='grafico.pdf', width=10, height=6)
+```
+
+PAREI NA 176
