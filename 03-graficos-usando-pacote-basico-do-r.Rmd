@@ -803,4 +803,105 @@ lines(ano, tri2, col="red", type="b")
 legend(2007, 80, c("1o.trim", "2o.trim"), col=c("blue", "red"), pch=rep(20,2))
 ```
 
-##PAREI NA 132
+### Hora de praticar
+
+1. Os dados (já retirados do R) mostram a velocidade em que o carro está e a distância que ele demora a parar. Crie um gráfico de linhas, colocando cor na linha, título e nome nos eixos.
+cars
+attach(cars)
+
+2. Os seguintes dados são medidas de viscosidade para um produto químico observado de hora em hora (leia de cima para baixo e da esquerda para a direita).
+
+47,9 48,8 48,6
+47,9 48,1 48,0
+48,6 48,3 47,9
+48,0 47,2 48,3
+48,4 48,9 48,5
+48,1 48,6 48,1
+48,0 48,0 48,0
+48,6 47,5 48,3
+
+Construa um gráfico de série temporal para esses dados.
+
+3. De acordo com Ministério da Educação a quantidade e alunos matriculados no ensino de 1º grau no Brasil nos de 1990 a 1996 em milhares de alunos, são: 19.720 – 20.567 – 21.473 – 21.887 – 20.598 – 22.473 – 23.564.
+Faça um gráfico de série temporal para apresentar esses dados.
+
+## Gráfico da distribuição normal
+
+A distribuição normal é uma das mais importantes distribuições da estatística, conhecida também como Distribuição de Gauss ou Gaussiana. É inteiramente descrita por seus parâmetros de média e desvio padrão, ou seja, conhecendo-se estes consegue-se determinar qualquer probabilidade em uma distribuição Normal.
+Para gerar o gráfico da distribuição de densidade de probabilidade, utilize:
+
+```{r}
+#Script para o gráfico da Distribuição Normal
+
+curve(dnorm(x), xlim=c(-4,4), main="Distribuição Normal Padrão", ylab="Densidade")
+```
+
+A geração de números aleatórios para a distribuição normal é obtida pelo comando *rnorm*(valor), sendo valor um número inteiro representando a quantidade de números que se deseja gerar.
+
+```{r}
+rnorm(50, mean=2, sd=sqrt(3)) #amostra de 50 número extraídos de uma distribuição normal com média = 2, variância = 3.
+rnorm(20) #amostra de tamanho 20 da distribuição normal padrão, média = 0 e variância =1.
+```
+
+Atente para o fato de que cada vez que se roda os comandos acima, uma nova sequência é obtida. Isso pode causar alguma inconveniência quando se deseja compartilhar o código ou rodá-lo outra vez de forma a obter os mesmos resultados. Para contornar este problema, basta definir um código de semente com o comando *set.seed*() antes de gerar a sequência aleatória.
+
+```{r}
+set.seed(1112); rnorm(4)
+```
+
+Com a semente 1112, o resultado será sempre 0.78768604, -0.42202478, 0.05690217, 0.71057431.
+
+Vamos produzir um histograma da frequência relativa de uma amostra de 500 números extraídos de uma distribuição normal com média = 2, variância = 4.
+
+```{r}
+set.seed(1112); hist(rnorm(500, mean=2, sd=sqrt(4)), freq=FALSE)
+```
+
+Podemos traçar no mesmo gráfico a curva da função de densidade da distribuição normal com média 2 e variância 4.
+
+Observe que *col*=2 fará o traçado vermelho, *lty*=2 fará linha tracejada, *lwd*=2 refere-se a espessura da linha e *add*=TRUE sobrepõe a curva ao gráfico anterior.
+
+```{r}
+set.seed(1112); hist(rnorm(500, mean=2, sd=sqrt(4)), freq=FALSE)
+set.seed(1112); curve(dnorm(x, mean=2, sd=sqrt(4)), col=2, lty=2, lwd=2, add=TRUE)
+```
+
+Vamos ilustrar graficamente o que acontece com os parâmetros da função de densidade normal.
+
+Fixando a variância e variando a média:
+
+```{r}
+curve(dnorm(x, mean=1, sd=sqrt(2)), lwd=2, from=-6, to=17)
+curve(dnorm(x, mean=10, sd=sqrt(2)), col=2, lwd=2, add=T)
+
+# Adicionando legenda e título ao gráfico:
+legend('topright', legend=c(expression(mu==1), expression(mu==10)), text.col=c(1,2), cex=1.5)
+title("Comparando a distribuição normal com médias diferentes")
+```
+
+Fixando a média e variando a variância:
+
+```{r}
+curve(dnorm(x,mean=4, sd=sqrt(3)), lwd=2, from=-15, to=25)
+curve(dnorm(x, mean=4, sd=sqrt(20)), col=2, lwd=2, add=T)
+legend('topright', legend=c(expression(sigma^2==3), expression(sigma^2==20)), text.col=c(1,2), cex=1.5)
+title("Comparando a distribuição normal com variâncias diferentes")
+```
+
+### Hora de Praticar
+
+1. Dez observações do tempo efetivo de vida de um catalisador usado em reações químicas produziram os resultados: 1176, 1191, 1214, 1220, 1205, 1192, 1201, 1190, 1183 e 1185. Supondo que estes tempos sigam a distribuição normal, calcule a média e o desvio padrão para construir o gráfico de uma
+normal com estes parâmetros.
+
+2. Construa o gráfico da distribuição normal variando a média no intervalo [-1,1] com tamanho de passo igual a 0.5. Fixe o desvio padrão em 1. Apresente uma legenda e cores diferentes para cada curva.
+
+3. Construa o gráfico da distribuição normal variando o desvio padrão no intervalo [0,2] com tamanho de passo igual a 0.5.
+Fixe a média em 0. Apresente uma legenda e cores diferentes para cada curva.
+
+4. Considere o peso de uma amostra de 15 pacotes de açúcar da marca X.
+
+pesos=c(0.9475, 0.9705, 0.9770, 0.9775, 0.9860, 0.9960, 0.9965, 0.9975, 1.0050, 1.0075, 1.0100, 1.0175, 1.0180, 1.02000, 1.0250)
+
+Construa o histograma destes pesos e no mesmo gráfico insira a curva de uma distribuição normal com média 1 e desvio padrão 0.05 na cor azul e outra com média igual a média dos pesos e desvio padrão igual ao desvio padrão dos pesos na cor vermelha. Coloque legenda para cada curva.
+
+REFERÊNCIAS PAGS 148-149
