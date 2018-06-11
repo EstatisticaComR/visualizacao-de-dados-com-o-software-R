@@ -1,0 +1,93 @@
+# Gráficos usando pacote Lattice
+
+Embora muito tenha sido visto no pacote anterior, o R ainda possui outras possibilidades. Esta é uma das vantagens de utilizar-se *software* livre. Diversos autores propõem diferentes soluções em pacotes que apresentam maior ou menor adequabilidade as tarefas do analista de dados.
+
+O propósito de visualizar dados é comunicar e o pacote *Lattice*, desenvolvido por Deepayan Sarkar, tem por característica principal aprimorar a visualização de relacionamentos multivariados. Em particular, o pacote suporta a representação de gráficos em treliça (*trellis graphs*) – que expõe o relacionamento entre uma ou mais variáveis quando condicionadas a uma ou mais variáveis.
+
+O *Lattice* requer a escolha de um tipo de gráfico, uma fórmula e um conjunto de dados. Difere do pacote básico sendo todas as instruções passadas de uma única vez. Assim, para alterar o gráfico será preciso executar novamente.
+
+**Tipo_do_gráfico (fórmula, data= [arquivo])**
+
+Assim, o analista deverá escolher inicialmente o tipo do gráfico desejado dentre os quinze disponíveis no pacote. Em seguida a fórmula desejada e por fim o conjunto de dados.
+
+A Tabela 3.1 apresenta os tipos de gráficos disponibilizados neste pacote.
+
+As funções (~) são apresentadas de forma simplificada onde x, y ou z representam variáveis aleatórias e C e F variáveis condicionais do tipo *factor* e *data frame* um conjunto de dados. Então, **~x|C** apresenta a variável numérica x para cada nível da variável categórica, C, do tipo *factor* no R. Enquanto **y~x**| C*F apresenta a relação entre as duas variáveis y e x para cada combinação das variáveis categóricas C e F.
+
+Tabela 3.1: Tipos de gráfico no Lattice – adaptado de Kobakof (2014) e Sakar (2015)
+
+Tipo de Gráfico | Descrição | Exemplo de 
+----------- | ----------- | -----------
+barchart | gráfico de barras | x~C ou C~x
+bwplot | boxplot | x~C ou C~x
+cloud | gráfico de dispersão em 3D | z~x*y|C
+contourplot | gráfico de contorno em 3D | z~x*y
+densityplot | gráfico de densidade de Kernel | ~x|C*F
+dotplot | gráfico de pontos empilhados | ~x|C
+histogram | histograma | ~x
+levelplot | gráfico de curvas de níveis em 3D | z~y*x
+parallel | gráfico de coordenadas paralelas | data frame
+qq() | gráfico de quartis para duas amostras | x~y|C
+qqmath() | gráfico do quartil teórico | ~x|C
+splom | matriz de dispersão | data frame
+stripplot | gráficos em tiras | C~x ou x~C
+xyplot | gráficos de dispersão | y~x|C
+wireframe | gráficos de superfície 3D | z~y*x
+
+## Gráfico de Dispersão no Lattice
+
+Nosso primeiro exemplo será um simples gráfico de dispersão, utilizando a base de dados mtcars disponibilizado pelo R.
+
+```{r message=TRUE, warning=TRUE}
+library(lattice)
+
+xyplot(mpg~wt, data=mtcars, pch=19, main="MPG vs WT", xlab="Wt/1000", ylab="MPG")
+```
+
+Na primeira linha carregamos o pacote *Lattice* e na segunda criamos o gráfico de dispersão mostrado na Figura acima. Assim, como no pacote básico é possível escolher o símbolo, colocar o título e dar nome aos eixos. Mas não exploramos a principal característica deste pacote. Com uma pequena alteração poderemos condicionar o consumo e peso ao número de cilindros.
+
+```{r}
+xyplot(mpg~wt | factor(cyl), data=mtcars, pch=19, main="MPG vs Wt", xlab="Wt/1000", ylab="MPG", layout=c(3,1), type=c("p", "g"))
+```
+
+O resultado mostrado na Figura acima é bem satisfatório considerando que utilizou-se apenas uma linha de código.
+
+Algumas instruções foram adicionadas: a variável categórica – número de cilindros entrou na fórmula, o layout especificando que teríamos 3 painéis em uma linha. Vejam que conhecíamos de antemão o número de diferentes categorias de cilindros. Caso não soubéssemos poderíamos ter utilizado o comando unique(mtcars$cyl) em substituição ao número 3 diretamente no comando. O type ajusta o uso da grade no gráfico, se suprimido esta seria eliminada.
+Mas isto foi apenas para dar noção de quão poderoso é este pacote. Fica ainda melhor se utilizarmos simultaneamente duas variáveis categóricas condicionando duplamente o resultado. Incluiremos na fórmula a variável categórica relativa a transmissão, am para a qual definimos os rótulos como "A" e "M" correspondendo respectivamente a automática ou manual.
+
+```{r}
+xyplot(mpg~wt | factor(cyl) + factor(am, labels=c("A", "M")), data=mtcars, main="MPG vs Wt", xlab="Wt/1000", ylab="MPG", pch=19, type=c("p", "g"))
+```
+
+Agora foi deixado ao *Lattice* resolver como apresentar o resultado. O consumo e peso dos veículos foi distribuído em duas linhas conforme a transmissão nas colunas como antes o número de cilindros. Um gráfico parecido com o primeiro utilizando o pacote básico demandaria uma programação bem mais complicada. Enquanto que um parecido a este seria mais fácil pois pacote básico lida bem com gráficos X/Y, cuja instrução seria:
+
+```{r}
+coplot(mpg~wt|factor(cyl)+factor(am),data=mtcars) 
+```
+
+Embora o resultado apresentado na Figura acima estivesse bem aquém.
+
+## Gráfico Stripplot
+
+O *stripplot* pode ser um gráfico interessante para revelar aspectos de uma distribuição especialmente com poucos dados, vejamos o exemplo disposto no *vignette* do pacote *Lattice*.
+
+```{r}
+stripplot(depth ~ factor(mag), data=quakes, jitter.data=TRUE, alpha=0.6, main="Depth of earthquake epicenters by magnitude", xlab="Magnitude (Richter)", ylab="Depth (km)")
+```
+
+Note como a transparência parcial e o efeito *jitter* aliviam a superposição dos pontos neste gráfico em tiras.
+
+## Gráfico em 3D
+
+Outra possibilidade no uso deste pacote são gráficos em 3D como o *wireframe*, a título de exemplo iremos gerar os dados para apresentar uma normal bivariada com este comando. Iniciamos por gerar as sequências e formar a grade uniforme. Em seguida calculamos os valores para uma função z, e finalmente apresentamos o gráfico, lembre-se que o pacote já se encontra carregado.
+
+```{r}
+x <- y <- seq(-5, 5, length=50)
+xy <- expand.grid(x, y)
+z <- (1/(2*pi))*exp(-.5*(xy[,1]^2+xy[,2]^2))
+wireframe(z~xy[,1]*xy[,2], xlab="x", ylab="y")
+```
+
+Com isso cremos ter demonstrado ao leitor que cada pacote no R tem características e finalidades próprias e embora não tenhamos esgotado as possibilidades com o *Lattice* esperamos ter mostrado como ele pode ser útil.
+
+REFERÊNCIAS PÁGS 167-168
