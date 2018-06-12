@@ -1,0 +1,80 @@
+# Gráficos usando pacote googleVis
+
+Em maio de 2010 o *Google* já dava sinais de inovação na forma como os dados poderiam ser representados em gráficos. Era anunciado um conjunto de modelos que possibilitavam a criação de gráficos com animação. Estes modelos foram impulsionados pela apresentação do *TED* de Hans Rosling em 2006 que já ultrapassou a marca de 10 milhões de visualizações.
+
+Atualmente é possível consultar a galeria de gráficos do *google* [neste link](https://developers.google.com/chart/interactive/docs/gallery)
+
+Em agosto de 2010 Markus Gesmann e Diego de Castillo iniciaram o desenvolvimento do pacote *GoogleVis* que cria uma interface entre o R e o pacote de gráficos do Google. A vantagem em utilizar este pacote é possibilitar ao usuário produzir gráficos diretamente do R, sem precisar carregar os dados para o *google*. Além do poder visual, também possuem animação e podem ser disponibilizados online em sites, blogs ou redes sociais.
+
+## Instalando o pacote
+
+Para instalar o pacote utilize o comando:
+
+**install.packages('googleVis')**
+
+Para carregar o pacote use o comando
+
+```{r}
+library(googleVis)
+```
+
+Neste caso, deve aparecer no console:
+
+*Welcome to googleVis version 0.5.10*
+*Please read the Google API Terms of Use*
+*before you start using the package:*
+*https://developers.google.com/terms/*
+*Note, the plot method of googleVis will by default use*
+*the standard browser to display its output.*
+*See the googleVis package vignettes for more details,*
+*or visit http://github.com/mages/googleVis.*
+*To suppress this message use:*
+*suppressPackageStartupMessages(library(googleVis))*
+
+Caso ao final apareça uma mensagem como a que segue,
+
+*Warning message:*
+*package ‘googleVis’ was built under R version ...*
+
+significa que sua versão do R é anterior à atual em relação ao pacote. É apropriado que se atualize para a versão 3.5.0 Lembre-se que estas atualizações não são feitas automaticamente.
+
+Para uma demonstração das possibilidades que o pacote oferece utilize o commando:
+
+**demo(googleVis)**
+
+Neste caso você vai apertando a tecla *enter* e a cada vez será gerado um gráfico no seu navegador padrão.
+
+## Os gráficos de movimento (Motion Chart) do Google
+
+Neste capítulo vamos mostrar como é possível criar um gráfico de movimentos.
+
+O primeiro passo é possuir uma planilha com a seguinte arquitetura:
+
+Coluna 1: variável quantitativa temporal: em geral ano
+Coluna 2: variável qualitativa
+Colunas 3 e 4: variável numérica
+
+Esta é a estrutura mínima da sua planilha de dados, podendo ser acrescentado colunas de qualquer natureza após a quarta coluna. Note que a ordem das quatro primeiras colunas quanto à natureza da variável deve ser respeitada para que tudo funcione corretamente.
+Vamos para um exemplo prático para o Comando *gvisMotionChart*.
+
+Estamos interessados em comparar o comportamento do índice de aprovação de três cursos diferentes (A, B e C) em duas instituições (UFF e UERJ) no período de 2010 a 2013.
+
+Nossa planilha de dados pode ser vista na tabela 5.1:
+
+Tabela 5.1: Dados sobre o índice de aprovação de alunos
+
+Ano | curso | UFF | UERJ
+------- | ------- | ------- | ------- 
+2010 | A | 20 | 50
+2011 | A | 30 | 40
+2012 | A | 35 | 46
+2013 | A | 44 | 43
+2010 | B | 9 | 30
+2011 | B | 20 | 28
+2012 | B | 13 | 33
+2013 | B | 30 | 23
+2010 | C | 30 | 15
+2011 | C | 10 | 19
+2012 | C | 18 | 21
+2013 | C | 4 | 24
+Fonte: Dados Fictícios
