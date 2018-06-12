@@ -78,3 +78,17 @@ Ano | curso | UFF | UERJ
 2012 | C | 18 | 21
 2013 | C | 4 | 24
 Fonte: Dados Fictícios
+
+Suponha que a tabela esteja armazenada no arquivo BD.csv. É importante que a sequência do tempo da coluna 1 se repita igual para cada categoria da coluna 2. Desse modo, o banco de dados deverá ter número de linhas igual ao comprimento do período multiplicado pelo número de categorias. No nosso exemplo será 4 x 3 = 12.
+
+```{r}
+#Script para gerar o gráfico de movimento
+
+dados <- read.csv2("C:\\...\\BD.csv")
+M=gvisMotionChart(dados, idvar="curso", timevar="Ano", options=list(height=350, width=400),)
+plot(M)
+#Para detalhes sobre a função utilize:
+?gvisMotionChart
+```
+
+PAREI NA 222
