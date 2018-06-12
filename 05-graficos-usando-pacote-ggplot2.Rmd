@@ -80,14 +80,304 @@ Para o tema geral do gráfico há as seguintes opções:
 #Script para gráfico de Barra
 
 dados <- read.csv2("C:\\...\\BD.csv")
-p <- ggplot(data=dados, aes(x=Área, y=Frequência, fill=Instituição))+ # Informação Básica
-geom_bar(stat='identity', width=0.5, position='dodge') +
-labs(x="Área", y="Frequência", title="Distribuição de Bolsas por Área do Conhecimento") +
-theme_bw()
+p <- ggplot(dados, aes(x=Área, y=Frequência, fill=Instituição))+ # Informação Básica
+  geom_bar(stat='identity', width=0.5, position='dodge')+
+  labs(x="Área", y="Frequência", title="Distribuição de Bolsas por Área do Conhecimento")+
+  theme_bw()
 p #plota o gráfico na janela gráfica
 
 #gravando o gráfico em arquivo pdf do diretório corrente:
 ggsave(p, file='grafico.pdf', width=10, height=6)
 ```
 
-PAREI NA 176
+```{r}
+#Script para gráfico de Barra Empilhado
+
+p <- ggplot(dados, aes(x=Área, y=Frequência, fill=Instituição))+ # Informação Básica
+  geom_bar(stat='identity', width=0.5, position='fill')+
+  labs(x="Área", y="Frequência", title="Distribuição de Bolsas por Área do Conhecimento")+
+  theme_gray()
+p #plota o gráfico na janela gráfica+theme_gray()
+```
+
+Vamos agora fazer o gráfico preenchendo as colunas por área
+
+```{r}
+p <- ggplot(dados, aes(x=Instituição, y=Frequência, fill=Área))+ # Informação Básica
+  geom_bar(stat='identity', width=0.5, position='fill')+
+  labs(x="Instituição", y="Frequência", title="Distribuição de Bolsas por Instituição")+
+theme_gray()
+p #plota o gráfico na janela gráfica+theme_gray()
+```
+Figura 43: Gráficos de Barras empilhado no ggplot, fundo cinza, frequência relativa
+
+```{r}
+p <- ggplot(data = dados, aes(x=Instituição, y=Frequência, fill=Área))+
+  geom_bar(stat='identity', width=0.5)+
+  labs(x="Instituição", y="Frequência", title="Distribuição de Bolsas por Instituição")+
+  theme_bw()
+p
+```
+Figura 44: Gráficos de Barras empilhado no ggplot, fundo branco, frequência absoluta
+
+### Hora de Praticar
+
+1. Desenvolva o gráfico da figura 4.3 e 4.4 na versão lado a lado.
+
+2. Desenvolva os gráficos para os casos da seção 2.4.7
+
+## Gráfico de Setor no ggplot2
+
+Observe o gráfico da figura 4.3. O script abaixo possibilita converter este gráfico de barras em um gráfico de setores. O grande diferencial neste recurso é produzir um único gráfico para duas sequências, a da instituição A e a da instituição B, tudo isso na forma de anéis, o interno representando A e o externo B, permitindo uma comparação imediata das duas categorias.
+
+```{r}
+#Script para gerar um gráfico de setores
+
+p <- ggplot(data = dados, aes(x=Instituição, y=Frequência, fill=Área))+
+  geom_bar(stat='identity', width=0.5, position='fill')+
+  labs(x="Instituição", y="Frequência", title="Distribuição de Bolsas por Instituição")+
+  theme_gray()
+p + coord_polar(theta="y")
+```
+Figura 45: Gráficos de Setores no ggplot
+
+## Histograma no ggplot2
+
+Usaremos os dados do *mtcars*. Veja como produzir um histograma padrão do pacote usando a camada +geom_histogram().
+
+```{r}
+ggplot(mtcars, aes(mpg))+ 
+  geom_histogram()
+```
+
+Vamos aprimorar acrescentando alguns elementos como amplitude das colunas (*breaks*) e cores (*color*). Veja o resultado na figura abaixo.
+
+```{r}
+#Script para histograma no ggplot2
+
+h <- ggplot(mtcars, aes(mpg))+
+  geom_histogram(breaks=seq(10, 35, by = 5), color="white", fill="black")
+h
+```
+Figura 46: Histograma no ggplot
+
+Podemos ainda ajustar as cores de preenchimento das colunas (*fill*) de acordo com os valores de suas frequências, desse modo temos a visualização de comparação não só pela altura das colunas como também pelo termômetro de cores de cada uma.
+
+```{r}
+#Script de histograma no ggplot com termômetro de cores
+
+h <- ggplot(mtcars, aes(mpg))+
+  geom_histogram(breaks=seq(10, 35, by = 5), color="white", aes(fill=..count..))
+h
+```
+Figura 47: Histograma no ggplot com termômetro de cores para as contagens.
+
+```{r}
+#Script de histograma no ggplot com termômetro de cores e linha de tendência
+
+h <- ggplot(mtcars, aes(mpg))+
+  geom_histogram(aes(y="density", fill="count"), breaks=seq(10, 35, by = 5), color="white")+
+  geom_density(col=2))
+h
+```
+
+## BoxPlot no ggplot2
+
+Usaremos os mesmos dados da seção 2.7, a amostra de 48 pedras de uma reserva de petróleo.
+
+```{r}
+rock[1:6,]
+```
+
+No comando *ggplot* temos sempre que definir a variável x e y. O *boxplot* será da variável *shape* podendo ser observado a amplitude da variável *perímetro*, representada no eixo x.
+
+```{r}
+#Script para BoxPlot simples
+
+b <- ggplot(rock, aes(x=peri, y=shape))+
+  geom_boxplot(color="Blue")
+b
+```
+Figura 48: Gráficos BoxPlot com alteração de cor e inclusão de títulos
+
+Para acrescentar título, novos rótulos para os eixos:
+
+```{r}
+b + ggtitle("BoxPlot do formato da pedra")+
+  xlab("perímetro")+ 
+  ylab("formato da pedra")
+```
+
+Se quiser modificar a cor utilize color="nome da cor" ou número
+
+```{r}
+b <- ggplot(rock, aes(x=peri, y=shape))+
+  geom_boxplot(color="red")
+b
+```
+
+ou
+
+```{r}
+b <- ggplot(rock, aes(x=peri, y=shape))+
+  geom_boxplot(color=3)
+b
+```
+
+Para múltiplos gráficos, utilizaremos os dados de *PlantGrowth*
+
+```{r}
+PlantGrowth[1:6,]
+```
+
+Temos duas possibilidades para gerar o boxplot da variável *weight*:
+
+```{r}
+b <- ggplot(PlantGrowth, aes(x=group, y=weight))+
+  geom_boxplot()
+b
+```
+Figura 4.9: Gráficos BoxPlot com vários grupos
+
+```{r}
+b <- ggplot(PlantGrowth, aes(x=group, y=weight, fill=group))+
+  geom_boxplot()
+b
+```
+Figura 4.10: Gráficos BoxPlot com vários grupos, legenda e cores
+
+Para colocar cor no *outlier* o comando é *outlier.colour*="cor". Nesse gráfico também foram colocados pontos que representam como que os dados estão dispersos, com o comando geom_jitter. Você também pode modificar esses pontos, como o tamanho (size) e cor (colour).
+
+```{r}
+b <- ggplot(PlantGrowth, aes(x=group, y=weight, fill=group))+
+  geom_boxplot(outlier.colour="red")+
+  geom_jitter(size=2, colour="blue")
+b
+```
+Figura 4.11: Gráficos BoxPlot com vários grupos incluindo dispersão dos dados
+
+Invertendo a posição do gráfico.
+
+```{r}
+b <- ggplot(PlantGrowth, aes(x=group, y=weight, fill=group))+
+  geom_boxplot(outlier.colour="red")+
+  geom_jitter(size=2, colour="blue")+
+  coord_flip( )
+b
+```
+Figura 4.12: Gráficos BoxPlot com vários grupos incluindo dispersão na posição horizontal
+
+Em qualquer dos casos, os títulos são acrescentados sempre da mesma forma:
+
+```{r}
+b + ggtitle("Boxplot para rendimento de plantas segundo o tratamento")+
+  xlab("tratamento")+ 
+  ylab("peso")
+b
+```
+
+### Hora de Praticar
+
+Proponha gráficos no ggplot para os itens da seção 2.7.1
+
+## Gráfico de dispersão no ggplot2
+
+Utilizaremos o banco de dados *Orange*. Os dados são medidas da circunferência em mm do tronco de pés de laranjeiras e sua respectiva idade em dias.
+
+```{r}
+Orange[1:6,]
+```
+
+```{r}
+b <- ggplot(Orange, aes(x=age, y=circumference, fill=Tree))+ 
+  geom_point()
+b
+```
+Figura 4.13: Gráficos de Dispersão para 5 espécies de árvores no ggplot
+
+Para discriminar os pontos, usamos um comando de coloração dos pontos de acordo com alguma das variáveis. Isso facilitará a leitura e interpretação dos dados.
+
+```{r}
+b + geom_point(aes(colour=Tree))
+```
+
+ou
+
+```{r}
+b + geom_point(aes(colour=age))
+```
+
+Figura 4.14: Gráficos de Dispersão para 5 espécies de árvores com cores por categoria
+
+Observe que alguns pontos ficaram sobrepostos. Para melhorar a visualização de casos como este, use a forma *jitter*.
+
+```{r}
+b <- ggplot(Orange, aes(x=age, y=circumference, fill=Tree))+ 
+  geom_jitter()
+b
+```
+Figura 4.15: Gráficos de Dispersão para 5 espécies de árvores comando jitter
+
+
+Com este recurso é possível perceber a massa de dados que se concentra num ponto de sobreposição, permitindo uma análise mais precisa.
+
+## Gráfico de linhas no ggplot2
+
+Utilizaremos os dados da seção 2.9. Vamos criar dois grupos para compor o *dataframe*, um representando a função –x3 (grupo 1) e outro a função x3 (grupo 2). Veja o *script* a seguir.
+
+```{r}
+#Script gráfico de linhas de duas funções
+
+x <- rep(0:20,2)
+y <- c( -x[1:21]**3, x[1:21]**3)
+dados <- data.frame(x, y, grupo=factor(c(rep(1, 21), rep(2, 21))))
+p <- ggplot(dados, aes(x, y, group=grupo, color=factor(group)))
+p + geom_line()
+```
+Figura 4.16: Gráficos de Linhas para duas funções no ggplot
+
+Vamos produzir o gráfico para as temperaturas de Ithaca.
+
+```{r}
+mes <- 1:12
+temperatura <- c(-5.44, -5.17, 0.11, 6.89, 12.67, 17.94, 20.44, 19.5, 15.67, 9.72, 4.06, -2.56)
+dados <- data.frame(mes, temperatura, grupo=factor(c(rep(1, 12))))
+p <- ggplot(dados, aes(x=mes, y=temperatura, group=grupo))
+p + geom_line(color=2) #podemos especificar a cor da linha
+```
+Figura 4.17: Gráficos de Linhas simples no ggplot
+
+Observe, entretanto que há um problema na escala do eixo x. Podemos definir novos limites para melhor apresentação. Utilize uma camada para definir os limites do eixo x.
+
+```{r}
+p + geom_line(color=2) + coord_cartesian(xlim=c(0, 12))
+```
+
+Para marcar os pontos no gráfico, acrescente mais uma camada (+*geom_point*).
+
+```{r}
+p + geom_line(color=2) + coord_cartesian(xlim=c(0, 12))+
+  geom_point(color="black")
+```
+Figura 4.18: Gráficos de Linhas e pontos para a série de temperatura de Ithaca.
+
+### Hora de Praticar
+
+Produza um script com o que você aprendeu nesta seção para elaborar um gráfico equivalente ao da Figura 2.31.
+
+## Títulos dos gráficos
+
+Os títulos dos gráficos e eixos são inseridos da mesma forma em todos os tipos de gráfico do pacote *ggplot2*.
+Podemos acrescentar camada por camada para cada eixo e Título:
+
+* +ggtitle("Título do Gráfico")
+* +xlab("rótulo do eixo X")
+* +ylab("rótulo do eixo Y")
+
+Ou todos de uma única vez:
+
++ labs(x="rótulo do eixo X", y="rótulo do eixo Y", title="Título do Gráfico")
+
+Não temos como esgotar todas as possibilidades deste pacote, exploramos aqui os principais recursos que tornam viável a produção de visualizações mais utilizadas no meio acadêmico.
+
+REFERÊNCIAS PAGS 213-214
