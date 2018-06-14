@@ -1,0 +1,109 @@
+# Dispositivos Gráficos e Cores no R
+ 
+Os gráficos em geral não se destinam apenas para verificação na tela do computador, mas para compor apresentações, artigos enfim documentos. Vários formatos podem ser obtidos com o R, tais como: EPS, PNG, SVG, TIFF, WMF, etc.
+
+Quando criamos um gráfico precisamos considerar qual será o dispositivo em que ele será mostrado. A lista de possíveis dispositivos pode ser obtida no [CRAN](https://stat.ethz.ch/R-manual/R-devel/library/grDevices/html/Devices.html).
+
+Enquanto exploramos dados de forma interativa a tela parece ser o dispositivo mais indicado e o formato *pdf* é o padrão para os demais casos. Assim, quando executamos um comando de gráfico como *plot*, no pacote *basic*, xyplot, no *lattice* ou *qplot*, no ggplot2, estaremos por padrão enviando um gráfico para a tela que conforme a plataforma tem um nome: no Windows será *Windows( )*, no Mac denomina-se *quartz( )* e no Linux, *x11( )*.
+
+Haverá momentos em que preferiremos arquivar os gráficos para uso futuro em outros formatos de documentos, para os quais usamos os dispositivos. Estes formatos são classificados como Vetorizados e Bitmap. Entender suas diferenças pode ajudar na futura adequação do objeto a finalidade pretendida.
+
+Os formatos vetorizados permitem melhor redimensionamento e se adequam melhor a linhas e formas. São exemplos de formatos vetorizados o PDF, SVG, Win.metafile, este último disponível apenas no Windows. 
+
+* PDF - portable document format - são portáveis, redimensionáveis, mas não muito eficientes quando uma imagem tem muitos pontos ou detalhes, os arquivos ficam grandes.
+* SVG - scalable vector graphics – só pelo nome já vemos que são adequados ao redimensionamento, normalmente muito utilizados em gráficos animados e interativos.
+
+Também o formato POSTSCRIPT é vetorizado, entretanto o Windows não apresenta um visualizador nativo para este tipo de arquivo.
+
+Os Bitmaps definem a exposição e cor para cada pixel ou bit, são exemplos deste tipo JPEG, PNG, GIF, TIFF e BMP. Este tipo de arquivo utiliza um método de especificação que melhor reproduz áreas com cores sólidas requerendo menos informação do que o tipo vetorizado, mas perde resolução mais facilmente quando redimensionados.
+
+Quando direcionamos um gráfico para outro dispositivo ele não será mostrado na tela então o cuidado na execução deverá ser maior.
+
+O formato PNG e JPEG podem ser facilmente convertidos para muitos outros formatos Bitmap. Este formato permite menores perdas no redimensionamento e trabalha bem com diagramas e blocos de cor.
+
+```{r}
+# apenas para formar o exemplo crie a sequência
+
+x <- seq(1,100, 0.1)
+meu_grafico <- sin(x)
+
+# abrindo o dispositivo png
+png("meu_grafico", width=480, height=480)
+
+# feche o dispositivo
+dev.off()
+```
+
+Veja que o código criará no diretório de trabalho o arquivo "meu_grafico.png", e o mesmo não será mostrado na tela. Recomenda-se verificar o arquivo gerado abrindo-o com o programa correspondente. Neste caso o leitor verificará por exemplo que faltam legendas nos eixos e um título, que já foi objeto de capítulos anteriores. A título de exercício modifique o código aprimorando "meu_grafico.png". O mesmo procedimento pode ser realizado para os demais dispositivos.
+
+O pacote *R.devices* permite controlar diversas opções de
+forma uniforme para todos os tipos de dispositivos. Produzindo saídas em diversos formatos com alterações mínimas no código. Sendo ideal para processamento em "batch", automatizado, porque nunca se esquecerá um dispositivo aberto, minimizando erros ou imagens incompletas. Um hábito que o leitor deve adquirir é ler os vignettes dos pacotes. As informações em geral são suficientes para um uso adequado dos mesmos. Os vignettes são disponibilizados e livres para consulta a partir do CRAN. No console do R é possível obter vignettes em pacotes instalados ou em uso:
+
+```{r}
+vignette() # mostra os vignettes disponíveis
+
+vignette("R.devices") # mostra um vignette específico
+```
+
+No índice do CRAN relativo ao pacote será possível baixar o manual no formato pdf dos pacotes. Sua leitura trará ao leitor a compreensão dos detalhes a partir da visualização e recomendada repetição no console dos exemplos. Aprende-se melhor fazendo e verificando os resultados, embora isso vá de encontro ao imediatismo da tarefa almejada.
+
+## Utilizando Múltiplos Dispositivos
+
+Embora seja possível abrir mais de um dispositivo simultaneamente estaremos criando o gráfico em apenas um por vez. Pode-se verificar qual o dispositivo ativo com a função *dev.cur()* que retorna um número inteiro maior ou igual a 2. Também podemos alterar qual o dispositivo ativo com a função *dev.set*(<inteiro>) onde o <inteiro> corresponde ao número associado ao dispositivo gráfico desejado.
+
+Vejamos um exemplo: Suponha que você deseje escolher quais dos três gráficos gostaria de adicionar a sua apresentação.
+
+```{r}
+# criar 3 gráficos em janelas diferentes
+
+dev.new() # ou windows() ou quartz() ou x11() conforme a plataforma
+dev.1 <- as.integer(dev.cur())
+dev.new()
+dev.2 <- as.integer(dev.cur())
+dev.new()
+dev.3 <- as.integer(dev.cur())
+
+x <- seq(1,100, 0.1)
+```
+
+```{r}
+# trocando para o dispositivo 1
+dev.set(dev.1)
+plot(x, sin(x), "1")
+
+# trocando para o dispositivo 3
+dev.set(dev.3)
+plot(x, cos(x), "1")
+
+# voltando para o dispositivo 1 e alterando o gráfico
+dev.set(dev.1)
+plot(x, sin(x), "1", col="red")
+```
+
+Sempre deve-se recorrer ao comando *dev.cur()* ao criar novos dispositivos pois não podemos afirmar que serão criados na ordem (1,2,3) já que podem haver outros dispositivos abertos.
+
+## Gráficos e suas Cores no R
+
+As cores padrões utilizadas nos pacotes de gráficos do R não favorecem a aparência ou os aspectos decisórios. Mas muitos desenvolvimentos foram realizados neste sentido. Um bom exemplo são as funções *colorRamp* e *colorRampPalette* presentes no pacote *grDevices*. Elas permitem a interpolação ou mistura de cores. Outra função que merece registro é a função *colors()* que lista todas as 657 cores disponíveis por nome para utilização em gráficos.
+
+Obter um bom esquema de cores pode ser desafiante ao buscar ressaltar os aspectos desejados numa imagem. O ditado popular já coloca a importância da imagem: “uma imagem vale mais que 1000 palavras”. Aspectos como transparência tipo do símbolo e separação categórica já foram abordados antes, mas entender como o R lida com as cores lhe dará liberdade em suas criações.
+
+O R utiliza uma representação hexadecimal, base 16, para descrever uma cor.
+
+O sistema RGB (vermelho, verde, azul) é representado por dois caracteres cada (#rr,gg,bb). Cada qual podendo variar de 0 a F, lembre-se base hexadecimal.
+
+Assim, “00“ poderá ser interpretado como zero e “FF” como 100%. Por exemplo: #FFFFFF é o branco, #000000 o preto, #0000FF azul, #00FF00 verde. Quando desejar-se incluir a transparência na cor adiciona-se mais dois caracteres ao final (#rrggbbaa).
+
+O R pode traduzir o modelo RGB para hexadecimal. Suas escalas variam de 0-1 mas outra usual é a de 0-255, que pode ser obtida usando *maxColorValue*=255. O *alpha* é o argumento utilizado para transparência, com a mesma escala variando de 0 a1, utilizamos anteriormente no gráfico de listas no capítulo do *Lattice*.
+
+Se o leitor não quer perder muito tempo, ou iniciar-se na teoria das cores sugerimos que utilize uma paleta de cores pré-definido no pacote *grDevices*, tais como: *cm.colors*, *topo.colors*, *terrain.colors*, *heat.colors rainbow* etc.
+
+O pacote *RColorBrewer* apresenta paletas categorizadas para utilização conforme objetivos a ressaltar: *sequencial* - destinada a dados numéricos relacionados a uma tendência, *diverging* – para dados que se afastam de uma média ou tendência, ou *categorical* – para separação condicional a uma variável categórica. Uma visualização completa destas paletas pode ser obtida com o pacote instalado e carregado através do comando: 
+
+```{r}
+display.brewer.all(5)
+```
+
+Por certo isto não esgota o tema das possibilidades gráficas do R com seus dispositivos e cores, mas dá ao leitor um marco inicial para sua exploração e aprimoramento.
+
+REFERÊNCIAS PAGS 270-271
