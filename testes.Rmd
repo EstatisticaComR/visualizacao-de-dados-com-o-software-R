@@ -1,0 +1,7 @@
+#Surgimento do R
+
+O software R surgiu no final da década de 1990, na Universidade de Auckland, Nova Zelândia através da iniciativa de dois professores de Estatística que perceberam a importância de se ter acesso a um código acessível aos alunos. Sua primeira versão foi publicada no dia 29 de fevereiro de 2000.
+
+
+
+Em geral, as licenças para software estatísticos comerciais apresentam um custo elevado, o que gera grande dificuldade de manipulação e aprendizagem aos alunos que necessitam desta ferramenta para produzir suas análises.
