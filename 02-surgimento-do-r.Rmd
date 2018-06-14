@@ -2,7 +2,7 @@
 
 O software R surgiu no final da década de 1990, na Universidade de Auckland, Nova Zelândia através da iniciativa de dois professores de Estatística que perceberam a importância de se ter acesso a um código acessível aos alunos. Sua primeira versão foi publicada no dia 29 de fevereiro de 2000.
 
-![](2 logos do R, pag 25)
+IMAGEM
 
 Em geral, as licenças para software estatísticos comerciais apresentam um custo elevado, o que gera grande dificuldade de manipulação e aprendizagem aos alunos que necessitam desta ferramenta para produzir suas análises.
 
@@ -30,13 +30,13 @@ Os canais que se destacam na rede social do facebook, tratando especificamente d
 
 Podemos perceber através destes números, que assuntos de interesse acadêmico como Estatística e software R não são muito populares se comparados a outros temas nas redes sociais, a maioria destas páginas foram criadas há menos de 4 anos e vem gradativamente ganhando adesão de professores de Instituições de Ensino. Pode-se perceber que muitos grupos e páginas foram criados por iniciativa de alunos de pós-graduação ou graduação no intuito de compartilhar suas dúvidas e promover uma rede de colaboração.
 
-Temos disponível cinco espelhos para *download* do *software* R:
+Temos disponível no Brasil cinco espelhos para *download* do *software* R:
 
-*[Center for Comp. Biol. at Universidade Estadual de Santa Cruz](http://nbcgib.uesc.br/mirrors/cran/)
-*[Universidade Federal do Parana](http://cran-r.c3sl.ufpr.br/) 
-*[Oswaldo Cruz Foundation, Rio de Janeiro](http://cran.fiocruz.br/)
-*[University of Sao Paulo, Sao Paulo](http://www.vps.fmvz.usp.br/CRAN/) 
-*[University of Sao Paulo, Piracicaba](http://brieger.esalq.usp.br/CRAN/) 
+* [Center for Comp. Biol. at Universidade Estadual de Santa Cruz](http://nbcgib.uesc.br/mirrors/cran/)
+* [Universidade Federal do Parana](http://cran-r.c3sl.ufpr.br/) 
+* [Oswaldo Cruz Foundation, Rio de Janeiro](http://cran.fiocruz.br/)
+* [University of Sao Paulo, Sao Paulo](http://www.vps.fmvz.usp.br/CRAN/) 
+* [University of Sao Paulo, Piracicaba](http://brieger.esalq.usp.br/CRAN/) 
 
 Fonte: [CRAN R-project](https://cran.r-project.org/mirrors.html)
 
@@ -49,9 +49,7 @@ Na rede social há diversas páginas e grupos, das quais destacamos o R bloggers
 ##Instalando o R
 
 Para fazer download do programa R, utilize sempre a página oficial do projeto, disponível em [www.r-project.org](http://www.r-project.org). Nesta página estará disponível diversas informações sobre a linguagem, documentos que podem auxiliar o aprendiz, além de ser constantemente atualizada com novas versões do programa. 
-Observe que ao lado direito da página oficial, abaixo da palavra *download*, há um *link* para CRAN que dará acesso aos espelhos do programa distribuídos pelos diversos países do mundo. No Brasil atualmente há 5 opções, qualquer uma delas pode ser utilizada, veja Tabela 1.
-
-!!!
+Observe que ao lado direito da página oficial, abaixo da palavra *download*, há um *link* para CRAN que dará acesso aos espelhos do programa distribuídos pelos diversos países do mundo. 
 
 O programa é multiplataforma, o que significa que pode ser instalado nos sistemas Windows, Linux e Mac. Assim, na página de *download* opte pelo *link* disponível para o seu sistema operacional. Veja a ilustração para a opção Windows:
 
@@ -63,7 +61,7 @@ Passo 1: Selecione o sistema operacional
 
 Passo 2: Selecione a versão disponível (na ilustração é a versão R ?)
 
-![]()
+IMAGEM
 
 Esta seleção fará o *download* do programa executável que possibilitará a instalação no seu computador. Atente para o fato de que constantemente são disponibilizadas novas versões do programa e suas atualizações não são automáticas, cabendo ao usuário verificar nesta página a ocorrência de novas versões. Pronto, agora é só utilizar o programa.
 
