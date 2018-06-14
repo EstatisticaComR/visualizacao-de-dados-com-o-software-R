@@ -91,4 +91,221 @@ plot(M)
 ?gvisMotionChart
 ```
 
-PAREI NA 222
+O resultado será o gráfico produzido em *html* (Figura 5.1). Diversos recursos podem ser explorados neste gráfico: colocá-lo em movimento, observando o que acontece em relação ao tempo e também o que acontece com a relação entre o índice de aprovação da UFF e UERJ para cada curso, tudo ao mesmo tempo! Podemos ainda selecionar a cor das bolas de acordo com uma das duas variáveis UFF ou UERJ. Na figura 5.1 podemos observar a coloração aplicada quando escolhemos a variável UFF. Neste caso, sendo UFF uma variável quantitativa, cada valor corresponderá a uma cor de acordo com o termômetro de cores, quanto maior o valor mais quente é a cor.
+
+É possível visualizar três tipos de gráfico disponível: bolhas, barras e linhas, além das funcionalidades disponíveis no menu lateral como *Color*, *Size* e *Select*. *Size* modifica o tamanho da bolha de acordo com a variável selecionada e *Select* possibilita acompanhar o comportamento de uma ou mais categorias que foram selecionadas. Isso gera uma grande quantidade de diferentes gráficos na mesma janela, possibilitando ao usuário fazer diversas explorações, comparações e análises.
+
+Além destas opções é possível utilizar um *script* para realizar edições online, abrindo uma grande variedade de gráficos que podem ser modificados instantaneamente. Para isto usamos o argumento *Edit me!*
+
+```{r}
+#Script para editar o layout do gráfico instantaneamente
+
+M=gvisMotionChart(dados, idvar="curso", timevar="Ano", options=list(gvis.editor="Edit me!", height=350, width=400))
+Plot(M)
+```
+
+Neste exemplo, além das possibilidades descritas acima, abrirá um editor de gráficos ao lado direito da janela, cujas opções podem ser vistas na Figura 5.3. Entretanto, apesar das múltiplas opções o analista deve ficar atento pois nem todo gráfico é aplicável para o banco de dados que dispõe. Neste exemplo, a melhor alternativa é o gráfico de bolhas.
+
+Você já deve ter percebido que todos esses recursos não terão tanto impacto nas formas tradicionais de exposição como documentos impressos, documentos em *pdf* ou apresentações em slide já que estes gráficos permitem o movimento e são gerados em código *html*, foram projetados para serem exibidos na *web* ou dispositivo que permita o movimento.
+
+## Gráficos de Linha do Google
+
+Usaremos o comando *gvisLineChart*. De forma muita rápida podemos gerar um gráfico de linhas, comparando duas ou mais séries de valores correspondentes à categorias.
+A arquitetura para este tipo de gráfico é um banco de dados com 3 colunas, uma variável qualitativa e duas ou mais quantitativas para o caso de comparações, veja a tabela de dados 5.2:
+
+Tabela 5.2: Dados sobre o número de homens (H) e mulheres (M) em cada curso
+
+Curso | H | M
+--- | --- | --- 
+A | 20 | 50
+B | 30 | 40
+C | 35 | 46
+D | 44 | 43
+E | 9 | 30
+Fonte: Dados Fictícios
+
+```{r}
+#Script para gerar o gráfico de Linha do pacote googleVis
+
+dados <- read.csv2("C:\\...\\BD.csv")
+L <- gvisLineChart(dados, xvar="curso", yvar=c("H", "M"), options=list(gvis.editor="Edit me!", height=350, width=400))
+plot(L)
+```
+
+Com o *script* acima você gerará um gráfico simples de linha para as variáveis H e M. Note que a o argumento xvar deve ser sempre uma variável qualitativa, não pode haver espaço entre as aspas e o nome do vetor ("curso") e o yvar deve ser vetor de variável quantitativa.
+
+Ao explorar os recursos gerado pelo comando *plot(L)*, você terá a opção de gerar gráficos de linhas e barras de diversas formas, acrescentar títulos, etc. Para se ter uma ideia, selecionamos a gráfico de barras com linhas, veja figura 5.4.
+
+Outro exemplo, agora personalizando título, posicionamento da legenda, rótulo dos eixos, etc. Explore os recursos, pois são muitos!
+
+## Hora de Praticar
+
+1. Lembra-se do script do capítulo 2 usando pacote básico do R para duas séries de valores? Veja:
+
+```{r eval=FALSE}
+#Script para plotar duas séries temporais em gráfico de linha com legenda
+
+ano <- 001:2009
+
+tri1 <- c(72.8,66.2,69.2,65.9,62.4,67.8,61.3,68.5,70.4)
+tri2 <- c(60.6,53.7,55.3,56.7,56.4,57.8,57.5,59.8,63.3)
+plot(ano, tri1, type="b", main="Taxa de ocupação por trimestre dos hotéis - Município do Rio de Janeiro", xlab="ano", ylab="Taxa de ocupação %", col="blue", ylim=c(50,80)) 
+lines(ano, tri2,col="red", type="b")
+legend(2007, 80, c("1o.trim", "2o.trim"), col=c("blue", "red"), pch=rep(20,2))
+```
+
+Crie um data.frame para armazenar os 3 vetores de dados: ano, tri1 e tri2 Utilize estes dados para fazer o gráfico no Google.
+
+2. Considere os dados da Tabela sobre a frequência para um grupo de fumantes de cigarro e um grupo de não-fumantes em diversos níveis séricos de cotinina. Proponha um gráfico de linhas do Google
+
+Nível de Cotinina (ng/ml) | Fumantes | Não-fumantes
+------- | ------- | ------- 
+0 – 13 | 78 | 3300
+14 – 49 | 133 | 72
+50 – 99 | 142 | 23
+100 – 149 | 206 | 15
+150 – 199 | 197 | 7
+200 – 249 | 220 | 8
+250 – 299 | 151 | 9
+300 + | 412 | 11
+
+3. Proponha um gráfico de linha do google para os dados abaixo.
+
+Área do conhecimento | Instituição A | Instituição B
+------ | ------ | ------
+Saúde | 1751 | 2528
+Exatas | 2186 | 2132
+Humanas | 947 | 1843
+Comunicação | 29 | 280
+
+## Gráficos de Setores do Google
+
+Vamos refazer os gráficos da seção 2.5. Note que o script é muito mais simples e depois de gerado o arquivo html, muitas opções de edição são possíveis. Duas possibilidades são exibidas abaixo.
+
+```{r}
+#Script para gráfico de setores no Google
+
+frota <- c(151882, 19627, 8058,1895, 3201, 1969,1268)
+nomes <- c("automoveis", "motocicletas", "caminhonetes", "motonetas", "onibus", "caminhoes", "outros")
+dados <- data.frame(nomes, frota)
+P <- gvisPieChart(dados, options=list(gvis.editor="Edit me!", height=350, width=400))
+plot(P)
+```
+
+### Hora de Praticar
+
+Refaça a Seção 2.5.1, usando os recursos do googleVis para propor representações web.
+
+## Gauge
+
+Este tipo de gráfico é útil para monitorar processos, as variáveis são visualizadas por indicadores na forma de ponteiro, como se fosse o velocímetro de um carro.
+
+Vamos produzir *gauges* para representar o percentual de homens em cinco instituições diferentes A, B, C, D e E cujos valores são respectivamente 20, 30, 35, 44 e 9.
+
+Definiremos 3 faixas de cores, verde com percentual de 0 a 30; amarelo com percentual de 30 a 70 e vermelho com percentual de 70 a 100.
+
+```{r}
+# Script para Gauge
+
+Col1=LETTERS[1:5]; Col2=c(20,30,35,44,9)
+Gauge <- gvisGauge(data.frame(Col1,Col2), options=list(min=0, max=100, greenFrom=0, greenTo=30, yellowFrom=30, yellowTo=70, redFrom=70, redTo=100))
+plot(Gauge)
+```
+
+Podemos interpretar estes gráficos observando seus ponteiros. No caso em tela, vemos que a instituição A e E possuem menos de 30% de homens pois os ponteiros estão na faixa verde cujo percentual varia de 0 a 30.
+
+Aqui também é possível incluir o comando Edit me! que torna possível mudar os intervalos das cores e o intervalo de valores.
+
+Estes gráficos se aplicam em situações onde se deseja observar um indicador numérico que será representado pelo ponteiro do relógio.
+
+### Hora de Praticar
+
+1. Uma pesquisa de satisfação sobre os itens, sabor e aroma de duas marcas de café geraram as seguintes notas em uma escala de 0 a 10:
+
+Marca | Aroma | Sabor
+----- |----- |-----
+A | 7 | 5
+B | 8.5 | 8.3
+
+Elabore um gauge para indicar estas notas para cada marca.
+
+2. Três corredores que disputaram uma maratona obtiveram o seguinte desempenho em velocidade média do percurso (km/h): 18.5; 19.4 e 21.3. Elabore um gauge para representar a velocidade de cada corredor.
+
+3. Considere a previsão de temperatura em graus Celsius para certa localidade nos próximos 5 dias. Projete um gauge que indique três faixas de valores: 0 a 15; 15 a 30 e 30 a 50, supondo que os valores previstos sejam 22; 31; 25; 19; 18; 15;
+
+## Gráficos Geográficos do Google
+
+Podemos também produzir visualização de dados em mapa geográfico. Vamos mostrar como deve ser a arquitetura do arquivo de dados dos países para produzir uma visualização no mapa *mundi*.
+
+O primeiro passo é saber o nome canônico do país. Para isso consulte o Apêndice A.
+
+Coluna 1: Nome do país
+
+Coluna 2: variável quantitativa relacionada à localidade da coluna 1
+
+Exemplo: Considere os dados da expectativa de vida de oito países.
+
+Tabela 5.3: Dados sobre Esperança de vida ao nascer
+
+País | E.Vida
+-----| -----
+Sierra Leone | 46
+India | 66
+Tonga | 71
+Brasil | 74
+China | 75
+Portugal | 81
+France | 82
+Japan | 84
+Fonte: World Health Organization (2013)
+
+Supondo que estes dados estejam em planilha BD.csv, ao rodar o script abaixo, o resultado será semelhante ao da figura 5.8.
+
+```{r}
+#Script para gerar o Geográfico do pacote googleVis
+
+Pais <- c("Sierra Leone", "India", "Tonga", "Brasil", "China", "Portugal", "France", "Japan")
+E.Vida <- c(46, 66, 71, 74, 75, 81, 82, 84)
+dados <- data.frame(Pais, E.Vida)
+G <- gvisGeoChart(dados, locationvar="Pais", colorvar="E.Vida")
+plot(G)
+```
+
+Usando o recurso da função *Edit me!*, é possível produzir com o mesmo comando e algumas manipulações simples no menu disponível, gerando um gráfico como o da figura abaixo, com o comando a seguir:
+
+```{r}
+G <- gvisGeoChart(dados, locationvar="Pais", colorvar="E.Vida", options=list(gvis.editor="Edit me!"))
+plot(G)
+```
+
+O menu permite que o usuário escolha as cores para a legenda, a cor do plano de fundo, o título do gráfico, além de escolher a região do mapa que deseja visualizar, cujas opções são: Ásia; África; Europa; América do Norte; América do Sul; Oceania; Estados Unidos e Internacional que engloba todas as opções anteriores.
+
+Pode ser útil publicar a tabela de dados que gerou o geográfico. Neste caso use usaremos adicionalmente a função *gvisTable* para definir a tabela e sua dimensão na tela e a função *gvisMerge* para mesclar o geográfico e a tabela na mesma tela. O argumento horizontal=TRUE se omitido posicionará a tabela abaixo do gráfico e não ao lado.
+
+```{r}
+#Script para Geográfico e Tabela de dados
+
+G <- gvisGeoChart(dados, locationvar="Pais", colorvar="E.Vida", options=list(width=400, height=400))
+T <- gvisTable(dados, options = list(width=150, height=200))
+GT <- gvisMerge(G, T, horizontal=TRUE)
+plot(GT)
+```
+
+Podemos ainda, imprimir marcas no mapa para representar uma variável georeferenciada e especificar a sua coloração.
+
+```{r}
+G <- gvisGeoMap(dados, locationvar="Pais", numvar="E.Vida", hovervar= "Pais", options=list(dataMode="markers", colors="[0xFF8747, 0xFFB581, 0xc06000]"))
+plot(G)
+```
+
+Esperamos com esse capítulo ter mostrado a potencialidade de uso deste pacote, mostrando como o R pode revolucionar de forma acessível a maneira como podemos representar nossos dados. Agora é praticar e explorar os recursos possíveis.
+
+### Hora de Praticar
+
+1. Produza um banco de dados com a população dos países da América do Sul. Utilize o apêndice A para obter os nomes canônicos. Produza um geográfico com edições possíveis.
+
+2. Produza um geográfico mundial com o IDH dos países.
+
+3. Produza um geográfico da América do Sul com o PIB dos países.
+
+REFERÊNCIAS PAG 253-254
