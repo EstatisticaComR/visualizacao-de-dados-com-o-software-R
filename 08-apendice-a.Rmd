@@ -3,7 +3,7 @@
 The ISO-3166-1 alpha-2 country code that is associated with the target.
 [Fonte](https://developers.google.com/adwords/api/docs/appendix/geotargeting): https://developers.google.com/adwords/api/docs/appendix/geotargeting
 
-| Critério ID | Nome | Nome Canônico | Código do País | Tipo
+n | Critério ID | Nome | Nome Canônico | Código do País | Tipo
 ----- | ----- | ----- | ----- | ----- | ----- 
 1 | 2004 | Afghanistan | Afghanistan | AF | Country
 2 | 2008 | Albania | Albania | AL | Country
