@@ -311,11 +311,7 @@ pie(frota)
 
 O gráfico acima não é informativo, pois o leitor não sabe do que se trata. Para que se torne compreensível é necessário realizar diversas melhorias como colocação de título, e os percentuais que representa cada setor.
 
-O título pode ser adicionado após a janela gráfica ser exibida. Neste caso utilizamos o comando *title*(“texto”) na sequência de comandos do script básico. Note aqui que o gráfico já está construído, apenas acrescentamos o título.
-
-```{r}
-title("Frota 2009 - Niterói_RJ")
-```
+O título pode ser adicionado após a janela gráfica ser exibida utilizando o comando *title*("texto").
 
 Para colocar as porcentagens utilizamos o argumento *labels*. Observe que nesta sequência o título é colocado como argumento da função *pie*. Aqui é necessário que se coloque uma legenda para que o leitor compreenda o gráfico.
 
@@ -339,10 +335,9 @@ pie(frota, main="Frota 2009 - Niterói_RJ", labels=rotulos, cex=0.7, col=rainbow
 
 Podemos colocar os nomes manualmente, mas só é bom utilizarmos este recurso no caso de algum nome ficar sobreposto a outro, pois dá um pouco de trabalho, dessa forma:
 
-```{r}
-pie(frota, main="Frota 2009 - Niterói_RJ", labels=NA)
-text(locator (length(names(frota)) ), rotulos)
-```
+**pie(frota, main="Frota 2009 - Niterói_RJ", labels=NA)**
+
+**text(locator(length(names(frota))), rotulos)**
 
 Após este último comando é necessário que se clique na janela do gráfico onde se deseja que os rótulos sejam impressos. O gráfico só ficará pronto depois de clicar 7 vezes, pois este é o número de setores do gráfico. Pode-se repetir este procedimento até obter o gráfico desejado.
 
@@ -495,7 +490,7 @@ boxplot(shape, main="BoxPlot do formato da pedra", ylab="perimetro/sqrt(area)")
 Se quisermos que as cercas sejam os valores máximo e mínimo utilizamos range=0:
 
 ```{r}
-bloxplot(shape, range=0)
+boxplot(shape, range=0)
 ```
 
 Se quisermos que o *outlier* não apareça no gráfico, utilizamos o seguinte comando:
@@ -619,7 +614,7 @@ plot(age[1:7], circumference[1:7], lwd=4) #Teste vários números para ver a dif
 Podemos mudar as bolas por outros símbolos. Para cada número temos uma forma diferente:
 
 ```{r}
-plot(age[1:7], circumference[1:7], pch=20). #Teste vários números para ver a diferença.
+plot(age[1:7], circumference[1:7], pch=8) #Teste vários números para ver a diferença.
 ```
 
 Podemos colocar vários símbolos num mesmo gráfico:
@@ -650,6 +645,7 @@ plot(age[1:7], circumference[1:7], sub="Desde 1968")
 E criar um texto também na posição escolhida (400, 80):
 
 ```{r}
+plot(age[1:7], circumference[1:7], sub="Desde 1968")
 text(400, 80, "Isso aqui pode ser escrito aqui")
 ```
 
