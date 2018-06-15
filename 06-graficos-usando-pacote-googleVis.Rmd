@@ -308,4 +308,8 @@ Esperamos com esse capítulo ter mostrado a potencialidade de uso deste pacote, 
 
 3. Produza um geográfico da América do Sul com o PIB dos países.
 
-REFERÊNCIAS PAG 253-254
+## Referência Bibliográfica do capítulo 5
+
+Gesmann, M; Castillo, D. Using the Google Visualisation API with R. The R Journal, 3(2):40-44, December 2011. Gesmann, G., Castillo, D., Cheng, J., Package googleVis. Disponível em <https://cran.r-project.org/web/packages/googleVis/googleVis.pdf>. Acesso em 13/12/2015.
+
+Hans Rosling. TED Talk: Hans Rosling shows the best stats you’ve ever seen. Disponívem em <http://www.ted.com/talks/hans_rosling_shows_the_best_stats_you_ve_ever_seen>. Acesso em 08/12/2015.
