@@ -67,4 +67,16 @@ Esta seleção fará o *download* do programa executável que possibilitará a i
 
 Nos próximos capítulos abordaremos as possibilidade de visualização de dados com o R, entretanto gostaríamos de destacar que a linguagem oferece inúmeras outras.
 
-REFERÊNCIAS PAGS 36-37
+## Referências Bibliográficas do capítulo 1
+
+Alcoforado, L.F. e equipe. Portal Estatística é com R! Disponível em <http://www.estatisticacomr.uff.br>. Acesso em08/12/15.
+
+Facebook. Rede Social. Disponível em <http://www.facebook.com>. Acesso em 08/12/15.
+
+R-BR. Lista Brasileira Oficial de discussão do programa R. Universidade Federal do Paraná – LEG. Disponível em <http://www.leg.ufpr.br/doku.php/software:rbr>. Acesso em 08/12/15.
+
+R Development Core Team. R: a language and environment for statistical computing. Viena (A): R Foundation for Statistical Computing. 2009. Disponível em <http://www.rproject.org>. Acesso 08/12/15.
+
+Ribeiro Jr, P.J. Brown, P.E. Some Words on the R project. The ISBA Bulletinm, v.8, n.1, p. 1216, 2001.
+
+Rbloggers. R news and tutorials contributed. Disponível em <http://www.rbloggers.com>. Acesso em 08/12/15.
