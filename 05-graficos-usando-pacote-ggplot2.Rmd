@@ -380,4 +380,12 @@ Ou todos de uma única vez:
 
 Não temos como esgotar todas as possibilidades deste pacote, exploramos aqui os principais recursos que tornam viável a produção de visualizações mais utilizadas no meio acadêmico.
 
-REFERÊNCIAS PAGS 213-214
+## Referência Bibliográfica do capítulo 4
+
+Wickham, Hadley. ggplot2: Elegant Graphics for Data Analysis. Dordrecht, Heibelberg, London, New York: Springer, 2009. Package ggplot2. Disponível em <https://cran.r-project.org/web/packages/ggplot2/ggplot2.pdf>. Acesso em 13/12/2015.
+
+ggplot2. Disponível em <http://ggplot2.org/>. 2013. Acesso em 13/12/2015
+
+Rbloggers. How to make a histogram with-ggplot2 by Filip Schouwenaars. 12/05/2015. Disponível em <http://www.r-bloggers.com/how-to-make-a-histogram-with-ggplot2/>. Acesso em 13/12/2015.
+
+RStudio, Data Visualization with ggplot2 Cheat Sheet, 3/2015. Disponível em <https://www.rstudio.com/wp-content/uploads/2015/03/ggplot2-cheatsheet.pdf>. Acesso em 13/12/2015.
