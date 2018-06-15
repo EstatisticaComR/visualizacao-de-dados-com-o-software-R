@@ -90,4 +90,10 @@ wireframe(z~xy[,1]*xy[,2], xlab="x", ylab="y")
 
 Com isso cremos ter demonstrado ao leitor que cada pacote no R tem características e finalidades próprias e embora não tenhamos esgotado as possibilidades com o *Lattice* esperamos ter mostrado como ele pode ser útil.
 
-REFERÊNCIAS PÁGS 167-168
+## Referências Bibliográficas do Capítulo 3
+
+PITTARD, Steve. Conditioning and Grouping with Lattice Graphics. Disponível em <https://rollingyours.wordpress.com/2014/02/17/conditioning-and-grouping-with-lattice-graphics/>. Acesso em 13/12/2015.
+
+RIZZO, Maria L. Statistical Computing with R, Chapman &amp; Hall/CRC, Florida Boca Raton, 2008. SAKAR, Deepayan Lattice Multivariate Data Visualization with R, Use R! Series, Springer , Baltimore 2011.
+
+SAKAR, Deepayan, Package lattice. Disponível em <https://cran.r-project.org/web/packages/lattice/lattice.pdf>. Acesso em 13/12/2015.
