@@ -106,4 +106,14 @@ display.brewer.all(5)
 
 Por certo isto não esgota o tema das possibilidades gráficas do R com seus dispositivos e cores, mas dá ao leitor um marco inicial para sua exploração e aprimoramento.
 
-REFERÊNCIAS PAGS 270-271
+## Referência Bibliográfica do capítulo 6
+
+BENGTSSON, HenrikPackage R.devices. Disponível em: <https://cran.r-project.org/web/packages/R.devices/R.devices.pdf>. Acesso em 10/12/2015/
+
+BRYAN, Jennifer Using Colors in R. Disponível em: <http://www.stat.ubc.ca/~jenny/STAT545A/block14_colors.html>. Acesso em: 12/12/2015
+
+GLYNN, Earl F. Pdf of Chart R Colors. Disponível em: <http://research.stowers-institute.org/efg/R/Color/Chart/>. Acesso em 11/12/2015 
+
+R documentation, Control Multiple devices. Disponivel em: <http://astrostatistics.psu.edu/datasets/R/html/grDevices/html/dev.html>. Acesso em 10/12/2015
+
+R documentation, Color Palettes, Disponível em: <https://stat.ethz.ch/R-manual/R-devel/library/grDevices/html/palettes.html>. Acesso em 14/12/2015.
