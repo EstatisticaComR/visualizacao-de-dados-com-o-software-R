@@ -900,4 +900,12 @@ pesos=c(0.9475, 0.9705, 0.9770, 0.9775, 0.9860, 0.9960, 0.9965, 0.9975, 1.0050, 
 
 Construa o histograma destes pesos e no mesmo gráfico insira a curva de uma distribuição normal com média 1 e desvio padrão 0.05 na cor azul e outra com média igual a média dos pesos e desvio padrão igual ao desvio padrão dos pesos na cor vermelha. Coloque legenda para cada curva.
 
-REFERÊNCIAS PAGS 148-149
+## Referência Bibliográfica do capítulo 2
+
+Alcoforado, L.F., Cavalcante, C.V., Introdução ao R utilizando a Estatística Básica, EDUFF, Niterói, 2014. Arriaza Gómez, A.J. et al. Estadística Básica con R y R-commander. Version Febrero 2008. Servicio de Publicaciones de La Universidad de Cadiz, 2008.
+
+Crawley, M.J. The R Book. Ed. John Wiley Professio, 2007. IBGE. Dados sobre Niterói, disponível em <http://www.ibge.gov.br/cidadesat/>. Acesso em 08/12/2011.
+
+Morettin, P.A.; Bussab, W.O. Estatística Básica. 5.ed. Ed. Saraiva, 2009. R Development Core Team, R: A Language and Environment for Statistical Computing,R Foundation for
+
+Statistical Computing, Vienna, Austria, 2009, disponível em <http://www.R-project.org>. Acesso em 08/12/15.
