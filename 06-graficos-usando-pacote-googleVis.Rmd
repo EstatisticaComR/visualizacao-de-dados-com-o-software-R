@@ -14,7 +14,7 @@ Para instalar o pacote utilize o comando:
 
 Para carregar o pacote use o comando
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 library(googleVis)
 ```
 
@@ -81,7 +81,7 @@ Fonte: Dados Fictícios
 
 Suponha que a tabela esteja armazenada no arquivo BD.csv. É importante que a sequência do tempo da coluna 1 se repita igual para cada categoria da coluna 2. Desse modo, o banco de dados deverá ter número de linhas igual ao comprimento do período multiplicado pelo número de categorias. No nosso exemplo será 4 x 3 = 12.
 
-```{r}
+```{r eval=FALSE}
 #Script para gerar o gráfico de movimento
 
 dados <- read.csv2("C:\\...\\BD.csv")
@@ -97,7 +97,7 @@ O resultado será o gráfico produzido em *html* (Figura 5.1). Diversos recursos
 
 Além destas opções é possível utilizar um *script* para realizar edições online, abrindo uma grande variedade de gráficos que podem ser modificados instantaneamente. Para isto usamos o argumento *Edit me!*
 
-```{r}
+```{r eval=FALSE}
 #Script para editar o layout do gráfico instantaneamente
 
 M=gvisMotionChart(dados, idvar="curso", timevar="Ano", options=list(gvis.editor="Edit me!", height=350, width=400))
@@ -124,7 +124,7 @@ D | 44 | 43
 E | 9 | 30
 Fonte: Dados Fictícios
 
-```{r}
+```{r eval=FALSE}
 #Script para gerar o gráfico de Linha do pacote googleVis
 
 dados <- read.csv2("C:\\...\\BD.csv")
