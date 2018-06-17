@@ -1,6 +1,6 @@
 ---
-title: "Jurimetria com aplicações em R"
-author: "Associação Brasileira de Jurimetria"
+title: "Visualização de dados com o software R"
+author: "Luciane Ferreira Alcoforado & Ariel Levy"
 date: "`r format(Sys.Date(), '%d de %B de %Y')`"
 knit: "bookdown::render_book"
 site: bookdown::bookdown_site
