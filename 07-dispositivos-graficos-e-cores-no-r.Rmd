@@ -66,7 +66,7 @@ dev.3 <- as.integer(dev.cur())
 x <- seq(1,100, 0.1)
 ```
 
-```{r}
+```{r  eval=FALSE}
 # trocando para o dispositivo 1
 dev.set(dev.1)
 plot(x, sin(x), "1")
@@ -100,7 +100,7 @@ Se o leitor não quer perder muito tempo, ou iniciar-se na teoria das cores suge
 
 O pacote *RColorBrewer* apresenta paletas categorizadas para utilização conforme objetivos a ressaltar: *sequencial* - destinada a dados numéricos relacionados a uma tendência, *diverging* – para dados que se afastam de uma média ou tendência, ou *categorical* – para separação condicional a uma variável categórica. Uma visualização completa destas paletas pode ser obtida com o pacote instalado e carregado através do comando: 
 
-```{r}
+```{r eval=FALSE}
 display.brewer.all(5)
 ```
 
