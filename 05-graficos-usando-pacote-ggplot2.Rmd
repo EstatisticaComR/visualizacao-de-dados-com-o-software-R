@@ -76,7 +76,7 @@ Para o tema geral do gráfico há as seguintes opções:
 * theme_classic() – possui fundo branco sem linhas de grade
 * theme_minimal() – tema mínimo
 
-```{r}
+```{r eval=FALSE}
 #Script para gráfico de Barra
 
 dados <- read.csv2("C:\\...\\BD.csv")
@@ -90,7 +90,7 @@ p #plota o gráfico na janela gráfica
 ggsave(p, file='grafico.pdf', width=10, height=6)
 ```
 
-```{r}
+```{r eval=FALSE}
 #Script para gráfico de Barra Empilhado
 
 p <- ggplot(dados, aes(x=Área, y=Frequência, fill=Instituição))+ # Informação Básica
@@ -102,7 +102,7 @@ p #plota o gráfico na janela gráfica+theme_gray()
 
 Vamos agora fazer o gráfico preenchendo as colunas por área
 
-```{r}
+```{r eval=FALSE}
 p <- ggplot(dados, aes(x=Instituição, y=Frequência, fill=Área))+ # Informação Básica
   geom_bar(stat='identity', width=0.5, position='fill')+
   labs(x="Instituição", y="Frequência", title="Distribuição de Bolsas por Instituição")+
@@ -111,7 +111,7 @@ p #plota o gráfico na janela gráfica+theme_gray()
 ```
 Figura 43: Gráficos de Barras empilhado no ggplot, fundo cinza, frequência relativa
 
-```{r}
+```{r eval=FALSE}
 p <- ggplot(data = dados, aes(x=Instituição, y=Frequência, fill=Área))+
   geom_bar(stat='identity', width=0.5)+
   labs(x="Instituição", y="Frequência", title="Distribuição de Bolsas por Instituição")+
@@ -130,7 +130,7 @@ Figura 44: Gráficos de Barras empilhado no ggplot, fundo branco, frequência ab
 
 Observe o gráfico da figura 4.3. O script abaixo possibilita converter este gráfico de barras em um gráfico de setores. O grande diferencial neste recurso é produzir um único gráfico para duas sequências, a da instituição A e a da instituição B, tudo isso na forma de anéis, o interno representando A e o externo B, permitindo uma comparação imediata das duas categorias.
 
-```{r}
+```{r eval=FALSE}
 #Script para gerar um gráfico de setores
 
 p <- ggplot(data = dados, aes(x=Instituição, y=Frequência, fill=Área))+
@@ -172,12 +172,12 @@ h
 ```
 Figura 47: Histograma no ggplot com termômetro de cores para as contagens.
 
-```{r}
+```{r eval=FALSE}
 #Script de histograma no ggplot com termômetro de cores e linha de tendência
 
 h <- ggplot(mtcars, aes(mpg))+
   geom_histogram(aes(y="density", fill="count"), breaks=seq(10, 35, by = 5), color="white")+
-  geom_density(col=2))
+  geom_density(col=2)
 h
 ```
 
@@ -325,7 +325,7 @@ Com este recurso é possível perceber a massa de dados que se concentra num pon
 
 Utilizaremos os dados da seção 2.9. Vamos criar dois grupos para compor o *dataframe*, um representando a função –x3 (grupo 1) e outro a função x3 (grupo 2). Veja o *script* a seguir.
 
-```{r}
+```{r  eval=FALSE}
 #Script gráfico de linhas de duas funções
 
 x <- rep(0:20,2)
