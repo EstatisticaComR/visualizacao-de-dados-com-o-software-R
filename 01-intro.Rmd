@@ -1,4 +1,4 @@
-#Apresentação {#intro}
+# Apresentação
 
 Esta obra é fruto de pesquisas sobre as possibilidades de elaboração de gráficos no mundo atual. As tecnologias disponíveis tornam possível analisar em curto espaço de tempo uma grande massa de dados. Entretanto é preciso ter o suporte de um *software* que possibilite a operacionalização destas análises. Apresentamos aqui o que há de  mais atual e inovador
 no que diz respeito ao uso do *software* R para produção de gráficos e visualização de dados.
