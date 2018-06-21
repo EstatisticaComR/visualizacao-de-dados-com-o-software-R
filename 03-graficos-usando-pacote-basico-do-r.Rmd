@@ -1,6 +1,6 @@
-#Gráficos usando pacote básico do R
+# Gráficos usando pacote básico do R
 
-##Variáveis Qualitativas:
+## Variáveis Qualitativas:
 
 Características que dizem respeito a qualidade ou atributos. Se as categorias da variável possuem uma ordem natural, ela é dita ser *qualitativa ordinal*; caso contrário, *qualitativa nominal*. No R estas variáveis são chamadas de fatores (*factor*).
 
@@ -22,7 +22,7 @@ Cargo na empresa: diretor, vice-presidente, presidente
 Quais gráficos podem ser usados?
 Setores e barras
 
-##Variáveis Quantitativas:
+## Variáveis Quantitativas:
 
 Características que dizem respeito a quantidades. Se os valores da variável se referem a uma contagem, ela é dita ser *quantitativa discreta*. Caso se refira a uma mensuração (com
 unidade de medida), ela é dita ser *quantitativa contínua*.
@@ -44,12 +44,12 @@ Tempo para executar uma tarefa (horas)
 Quais gráficos podem ser usados?
 Histograma, boxplot, dispersão, linha.
 
-##Os gráficos
+## Os gráficos
 
 A elaboração de gráficos no R se dará na forma de *script*. Construiremos os *scripts* que poderão ser adaptados para outras situações semelhantes. Para executar os *scripts* basta inseri-los
 no console do programa R.
 
-##Gráfico de barras:
+## Gráfico de barras:
 
 O gráfico de barras é composto por duas linhas ou eixos, um vertical e outro horizontal. No eixo vertical são construídas as barras que representam a variação de um fenômeno ou de um processo de acordo com sua intensidade. Essa intensidade é indicada pela altura da barra. No eixo horizontal especifica-se as categorias da variável. As barras devem sempre possuir a mesma largura e a distância entre elas deve ser constante.
 
@@ -90,7 +90,7 @@ ya <- c(1751, 2186, 947, 29)
 barplot(ya, names.arg=x, main="Distribuição de bolsas de pesquisa por área de conhecimento", xlab="Grandes Áreas", ylab="Frequência", sub="Dados fictícios")
 ```
 
-###Modificando o tamanho da fonte
+### Modificando o tamanho da fonte
 
 Usando o argumento cex.nome, podemos mudar o tamanho da fonte de diversas partes do gráfico. Se necessitar mudar o tamanho da fonte do título, dos eixos, do subtítulo ou dos números nos eixos acrescente o argumento
 
@@ -123,7 +123,7 @@ barplot(ya, names.arg=x, main="Distribuição de bolsas de pesquisa por área de
 ```
 
 
-###Eliminando os eixos do gráfico
+### Eliminando os eixos do gráfico
 
 Podemos ainda retirar os eixos do gráfico, neste caso usa-se o argumento axes=F:
 
@@ -280,7 +280,7 @@ Nível de Cotinina (ng/ml) | Fumantes | Não-fumantes
 250–299 | 151 | 9
 300+ | 412 | 11
 
-##Gráfico de setor
+## Gráfico de setor
 
 Os gráficos de setor (ou pizza) são representados por círculos divididos proporcionalmente de acordo com os dados do fenômeno ou do processo a ser representado. Os valores são expressos em números ou em percentuais (%). São muito úteis para termos uma visão do tamanho da fatia correspondente a uma categoria quando comparada com o todo. Não é adequado quando se quer utilizá-lo para representar muitas categorias ao mesmo tempo.
 
@@ -380,7 +380,7 @@ despesas=c(22200,10500,3530,1040,341)
 
 4. Refaça o gráfico anterior semelhante ao apresentado na figura 2.13.
 
-##Histograma
+## Histograma
 
 Um histograma é uma representação gráfica da distribuição de frequências de uma massa de medições, normalmente um gráfico de barras verticais. Tal gráfico é composto por retângulos justapostos em que a base de cada um deles corresponde ao intervalo de classe e a sua altura à respectiva frequência.
 
@@ -467,7 +467,7 @@ b. Faça o histograma das temperaturas do mês de setembro. Coloque título e co
     
 c. Converta as temperaturas do mês de maio para graus Celsius através da expressão °C=(°F − 32)/1,8. Faça o histograma da frequência relativa, coloque título, sombreamento de densidade 25 e cor=“dark blue”
 
-##Boxplot
+## Boxplot
 
 O *boxplot* é um gráfico que possibilita representar a distribuição de um conjunto de dados com base em alguns de seus parâmetros descritivos, quais sejam: a mediana (q2), o quartil inferior (q1), o quartil superior (q3) e do intervalo interquartil (IQR = q3 - q1).
 
@@ -580,7 +580,7 @@ Faça um boxplot de x e y, com legendas.
 
 5. Refaça o gráfico anterior utilizando o argumento varwidth=TRUE.
 
-##Gráfico de dispersão
+## Gráfico de dispersão
 
 Os diagramas de dispersão são representações de duas variáveis que são organizadas em um gráfico, para observar o padrão de relacionamento entre as mesmas. É um método gráfico que permite verificar a existência ou não de relação entre duas variáveis de natureza quantitativa.
 
@@ -708,7 +708,7 @@ At. Físicas 2 10 5 5 8 15 0 4 5 10 2 15 6 4 2 6 4 10 12 15
 
 Construa um gráfico de linhas para esse par de variáveis. Com base neste gráfico, você acredita que há relação entre as horas dedicadas às duas atividades?
 
-##Gráfico de linhas
+## Gráfico de linhas
 
 Este gráfico é útil para plotar uma série de dados ao longo do tempo ou para ligar pontos por linhas.
 
