@@ -5,3 +5,22 @@ date: "`r format(Sys.Date(), '%d de %B de %Y')`"
 knit: "bookdown::render_book"
 site: bookdown::bookdown_site
 ---
+
+```{r setup, include = FALSE}
+#options(xtable.comment = FALSE)
+knitr::opts_chunk$set(echo = FALSE, 
+                      message = FALSE, 
+                      collapse = FALSE,
+                      warning = FALSE, 
+                      fig.height = 5, 
+                      comment = "#>",
+                      fig.width = 9)
+# options(OutDec = ',')
+# options(knitr.table.format = 'markdown')
+```
+
+```{r echo = F}
+library(tidyverse)
+library(lattice)
+library(googleVis)
+```
