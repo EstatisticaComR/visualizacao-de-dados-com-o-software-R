@@ -1,4 +1,4 @@
-#Surgimento do R
+# Surgimento do R
 
 O software R surgiu no final da década de 1990, na Universidade de Auckland, Nova Zelândia através da iniciativa de dois professores de Estatística que perceberam a importância de se ter acesso a um código acessível aos alunos. Sua primeira versão foi publicada no dia 29 de fevereiro de 2000.
 
@@ -12,7 +12,7 @@ Sensíveis a isto, Robert Gentleman e Ross Ihaka iniciaram a primeira versão do
 
 O grande sucesso desta iniciativa é que o sistema que se criou de compartilhamento e colaboração resultou na explosão de uso do R no meio acadêmico, sendo absorvido pelas empresas mais inovadoras ao perceberem a grande flexibilidade que seu uso acarreta, além é claro da economia financeira para licença de uso.
 
-##Na UFF
+## Na UFF
 
 Não sabemos precisar quem foram os pioneiros a utilizar o R dentro da UFF, mas no ano de 2010 seu aprendizado foi introduzido no curso de Estatística na disciplina obrigatória de Métodos Computacionais I, o primeiro contato do aluno calouro com o R. Naquela época, cem por cento dos alunos ingressantes neste curso desconheciam o que era o R. Ainda hoje a maioria dos calouros não o conhecem, o que indica que é no meio Universitário que se tem este primeiro contato.
 
@@ -22,7 +22,7 @@ CITAÇÃO Luciane Ferreira Alcoforado em entrevista ao Jornal O Fluminense, Segu
 
 Atualmente a Universidade Federal Fluminense abriga um importante portal [Estatística é com R!](http://www.estatisticacomr.uff.br) que reúne diversos conteúdos de aprendizagem para toda a comunidade, sendo a pioneira no Brasil em organizar um seminário Internacional sobre a linguagem, o SER cuja primeira edição ocorreu em maio de 2016.
 
-##No Brasil
+## No Brasil
 
 No Brasil a porta de entrada do R foi através da Universidade Federal do Paraná (UFPR), que disponibilizava um espelho para realização de *download* do R. As primeiras apostilas em português também iniciaram através da produção do professor Paulo Justiniano da UFPR, (R-BR, 2015). Atualmente há uma lista de discussão oficial do programa R, a R-BR com o propósito de permitir a troca de informações entre os usuários de R no Brasil.
 
@@ -40,13 +40,13 @@ Temos disponível no Brasil cinco espelhos para *download* do *software* R:
 
 Fonte: [CRAN R-project](https://cran.r-project.org/mirrors.html)
 
-##No mundo
+## No mundo
 
 Vem ganhando crescente popularidade, tanto é que em meados de 2015 o software atingiu a marca da sexta linguagem mais popular do mundo, segundo a métrica da IEEE Spectrum. Na mesma época em que tal notícia foi divulgada também era anunciado o R consortium que reúne Linux, Microsoft e o R time. Este consortium promete trabalhar no apoio ao desenvolvimento do R, mantendo a linguagem e prestando suporte aos seus usuários.
 
 Na rede social há diversas páginas e grupos, das quais destacamos o R bloggers com 28.500 curtidas, o grupo Users of R Statistical Package com 11.500 membros e o grupo Big Data Analytics using R com 6.500 membros no Facebook em 2015.
 
-##Instalando o R
+## Instalando o R
 
 Para fazer download do programa R, utilize sempre a página oficial do projeto, disponível em [www.r-project.org](http://www.r-project.org). Nesta página estará disponível diversas informações sobre a linguagem, documentos que podem auxiliar o aprendiz, além de ser constantemente atualizada com novas versões do programa. 
 Observe que ao lado direito da página oficial, abaixo da palavra *download*, há um *link* para CRAN que dará acesso aos espelhos do programa distribuídos pelos diversos países do mundo. 
