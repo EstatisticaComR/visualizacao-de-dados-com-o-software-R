@@ -5,9 +5,9 @@ bookdown::gitbook:
     toc:
       collapse: none
       before: |
-        <li><a href='Visualização de dados com o software R'><img src='' style="max-width:100%;"/></a></li>
+        <li><a href='Visualização de dados com o software R'><img src='https://avatars2.githubusercontent.com/u/32965816?s=460&v=4' style="max-width:100%;"/></a></li>
       after: |
-        <li><a href="Visualização de dados com o software R" target="blank">Published with bookdown</a></li>
+        <li><a href="https://bookdown.org" target="blank">Published with bookdown</a></li>
     sharing:
       github: yes
       facebook: no
