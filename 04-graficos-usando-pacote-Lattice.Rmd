@@ -1,5 +1,10 @@
 # Gráficos usando pacote Lattice
 
+```{r}
+library(lattice)
+```
+
+
 Embora muito tenha sido visto no pacote anterior, o R ainda possui outras possibilidades. Esta é uma das vantagens de utilizar-se *software* livre. Diversos autores propõem diferentes soluções em pacotes que apresentam maior ou menor adequabilidade as tarefas do analista de dados.
 
 O propósito de visualizar dados é comunicar e o pacote *Lattice*, desenvolvido por Deepayan Sarkar, tem por característica principal aprimorar a visualização de relacionamentos multivariados. Em particular, o pacote suporta a representação de gráficos em treliça (*trellis graphs*) – que expõe o relacionamento entre uma ou mais variáveis quando condicionadas a uma ou mais variáveis.
